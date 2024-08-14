@@ -21,6 +21,8 @@ export enum Emblem {
     CIRCLE,
     INVERTED_TRIANGLE,
     Diamond,
+    Double_Diamond,
+    Star,
     NONE
 }
 
@@ -109,6 +111,19 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                     <>
                         {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 20 50, 50 80, 80 50, 0"></polygon> : <></>}
                         <polygon fill="none" points="50 20, 20 50, 50 80, 80 50, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                    </> :
+                    <></>}
+                {props.Emblem == Emblem.Double_Diamond ?
+                    <>
+                        <polygon fill="none" points="30 70, 30 30, 70 30, 70 70" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                        {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 20 50, 50 80, 80 50, 0"></polygon> : <></>}
+                        <polygon fill="none" points="50 20, 20 50, 50 80, 80 50, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                    </> :
+                    <></>}
+                {props.Emblem == Emblem.Star ?
+                    <>
+                        {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 40 40, 20 30, 30 60, 25 80, 50 65, 75 80, 70 60, 80 30, 60 40"></polygon> : <></>}
+                        <polygon fill="none" points="50 20, 40 40, 20 30, 30 60, 25 80, 50 65, 75 80, 70 60, 80 30, 60 40" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                     </> :
                     <></>}
                 {props.Symbol == Symbol.SZ ?
