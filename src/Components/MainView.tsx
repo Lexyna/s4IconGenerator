@@ -23,9 +23,9 @@ export const MainView = () => {
 
     return (
         <>
-            <div style={{ display: "flex", marginRight: "0rem" }}>
+            <div style={{ display: "flex" }}>
                 <div>
-                    <div >
+                    <div style={{ display: "flex" }}>
                         <SVGIconSpace {...svgProps} corners={1}></SVGIconSpace>
                         <SVGIconSpace {...svgProps} corners={2}></SVGIconSpace>
                         <SVGIconSpace {...svgProps} corners={3}></SVGIconSpace>
@@ -56,7 +56,9 @@ export const MainView = () => {
                         <SVGIconSpace {...svgProps} corners={4} stripes={4}></SVGIconSpace>
                     </div>
                 </div>
-                <Controlls setSVGProps={setSvgProps} svgProps={svgProps} ></Controlls>
+                <div style={{ paddingLeft: "1rem" }}>
+                    <Controlls setSVGProps={setSvgProps} svgProps={svgProps} ></Controlls>
+                </div>
             </div>
         </>
     )
