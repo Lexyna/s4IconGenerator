@@ -62,7 +62,7 @@ export const MainView = () => {
                 <div style={{ paddingLeft: "1rem" }}>
                     <Controlls setSVGProps={setSvgProps} svgProps={svgProps} ></Controlls>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

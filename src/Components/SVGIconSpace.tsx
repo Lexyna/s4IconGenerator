@@ -1,4 +1,5 @@
-import { leaning4, leaning_One, normal4, path_Z, stylish3 } from "./SVGSymbolPaths"
+import { useRef } from "react";
+import { leaning4, leaning_One, normal4, path_Z, stylish3 } from "./SVGSymbolPaths";
 
 export interface SVGIconProps {
     bgColor1: string,
@@ -46,9 +47,23 @@ export enum Symbol {
 
 export const SVGIconSpace = (props: SVGIconProps) => {
 
+    const svgRef = useRef(null);
+
+    const download = () => {
+        const svg = svgRef.current;
+        if (svg == null) return;
+
+        const blob = new Blob([(svg as SVGElement).outerHTML.toString()]);
+        const element = document.createElement("a");
+        element.download = "s4l.svg"
+        element.href = window.URL.createObjectURL(blob);
+        element.click()
+        element.remove();
+    }
+
     return (
         <span >
-            <svg viewBox="0 0 100 100" width={120} height={120}>
+            <svg viewBox="0 0 100 100" width={120} height={120} ref={svgRef} onClick={download}>
                 <defs>
                     <linearGradient id="bgGradient" x1={0} x2={0} y1={0} y2={1}>
                         <stop stopColor={props.bgColor1} offset="0%"></stop>
