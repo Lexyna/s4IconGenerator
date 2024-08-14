@@ -39,15 +39,15 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                         <stop stopColor={props.cornerCol1} offset="0%"></stop>
                         <stop stopColor={props.cornerCol2} offset="100%"></stop>
                     </linearGradient>
-                    <linearGradient id="stripesGradient" x1={0} x2={1} y1={0} y2={0} gradientUnits="userSpaceOnUse">
+                    <linearGradient id="stripesGradient" x1={0} x2={100} y1={0} y2={0} gradientUnits="userSpaceOnUse">
                         <stop stopColor={props.stripesCol1} offset="0%"></stop>
                         <stop stopColor={props.stripesCol2} offset="100%"></stop>
                     </linearGradient>
-                    <linearGradient id="EmblemGradient" x1={0} x2={1} y1={0} y2={1} gradientUnits="userSpaceOnUse">
+                    <linearGradient id="EmblemGradient" x1={0} x2={1} y1={0} y2={1}>
                         <stop stopColor={props.EmblemCol1} offset="0%"></stop>
                         <stop stopColor={props.EmblemCol2} offset="100%"></stop>
                     </linearGradient>
-                    <linearGradient id="SymbolGradient" x1={0} x2={0} y1={0} y2={1} gradientUnits="userSpaceOnUse">
+                    <linearGradient id="SymbolGradient" x1={0} x2={0} y1={0} y2={1}>
                         <stop stopColor={props.SymbolCol1} offset="0%"></stop>
                         <stop stopColor={props.SymbolCol2} offset="100%"></stop>
                     </linearGradient>
