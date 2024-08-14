@@ -138,6 +138,7 @@ export const Controlls = (props: controllerProps) => {
             case "SS": symbol = Symbol.SS; break;
             case "SZ": symbol = Symbol.SZ; break;
             case "S3": symbol = Symbol.S3; break;
+            case "S3A": symbol = Symbol.S3A; break;
             case "NONE": symbol = Symbol.NONE; break;
             default: break;
         }
@@ -231,6 +232,7 @@ export const Controlls = (props: controllerProps) => {
                             <option value="SZ">SZ</option>
                             <option value="SS">S2</option>
                             <option value="S3">S3</option>
+                            <option value="S3A">S3 Alternative</option>
                             <option value="NONE">NONE</option>
                         </select>
                     </div>

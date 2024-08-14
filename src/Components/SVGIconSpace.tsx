@@ -30,6 +30,7 @@ export enum Symbol {
     SZ,
     SS,
     S3,
+    S3A,
     NONE
 }
 
@@ -159,6 +160,16 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                             d="m 50 30 Q 17 39 50 50 Q 58 82 20 80 L 20 70 A 1 0.5 0 0 0 20 50 Q 18 18 50 20 L 50 30"
                             filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(15 10)" />
 
+                    </> :
+                    <></>}
+                {props.Symbol == Symbol.S3A ?
+                    <>
+                        <path strokeWidth="4" fill="url(#SymbolGradient)"
+                            d="m 50 30 Q 17 39 50 50 Q 58 82 20 80 L 20 70 A 1 0.5 0 0 0 20 50 Q 18 18 50 20 L 50 30"
+                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" />
+                        <path strokeWidth="4" fill="url(#SymbolGradient)"
+                            d="m 50 20 L 80 20 L 80 27 L 67 47 Q 65 50 67 53 L 80 73 L 80 80 L 50 80 L 50 70 L 65 70 L 55 53 Q 53 50 55 47 L 65 30 L 50 30 L 50 20"
+                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(2)" />
                     </> :
                     <></>}
             </svg>
