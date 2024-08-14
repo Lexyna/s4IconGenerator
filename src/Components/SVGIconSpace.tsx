@@ -20,6 +20,7 @@ export interface SVGIconProps {
 export enum Emblem {
     CIRCLE,
     INVERTED_TRIANGLE,
+    Diamond,
     NONE
 }
 
@@ -104,6 +105,12 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                     {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 20 80, 80 80, 0" ></polygon> : <></>}
                     <polygon fill="none" points="50 20, 20 80, 80 80, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                 </> : <></>}
+                {props.Emblem == Emblem.Diamond ?
+                    <>
+                        {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 20 50, 50 80, 80 50, 0"></polygon> : <></>}
+                        <polygon fill="none" points="50 20, 20 50, 50 80, 80 50, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                    </> :
+                    <></>}
                 {props.Symbol == Symbol.SZ ?
                     <>
                         <path strokeWidth="4" fill="url(#SymbolGradient)"

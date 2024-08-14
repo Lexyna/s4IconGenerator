@@ -112,6 +112,7 @@ export const Controlls = (props: controllerProps) => {
         switch (e.currentTarget.value) {
             case "Circle": emblem = Emblem.CIRCLE; break;
             case "Inv_Tri": emblem = Emblem.INVERTED_TRIANGLE; break;
+            case "Diamond": emblem = Emblem.Diamond; break;
             case "NONE": emblem = Emblem.NONE; break;
             default: break;
         }
@@ -201,6 +202,7 @@ export const Controlls = (props: controllerProps) => {
                         <select onChange={e => changeEmblem(e)}>
                             <option value="Circle">Circle</option>
                             <option value="Inv_Tri">Inverted Triangle</option>
+                            <option value="Diamond">Diamond</option>
                             <option value="NONE">None</option>
                         </select>
                         <div style={{ display: " flex" }}>
