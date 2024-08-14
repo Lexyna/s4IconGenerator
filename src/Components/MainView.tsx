@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { Controlls } from "./Controlls";
 import { Emblem, SVGIconProps, SVGIconSpace, Symbol } from "./SVGIconSpace";
 
 export const MainView = () => {
 
-    const svgProps: SVGIconProps = {
+    const [svgProps, setSvgProps] = useState<SVGIconProps>({
         bgColor1: "#ebba34",
         bgColor2: "#a87e0c",
         cornerCol1: "#b9f2ff",
@@ -18,7 +19,7 @@ export const MainView = () => {
         Symbol: Symbol.SZ,
         SymbolCol1: "#e68787",
         SymbolCol2: "#cc0202"
-    }
+    })
 
     return (
         <>
@@ -55,7 +56,7 @@ export const MainView = () => {
                         <SVGIconSpace {...svgProps} corners={4} stripes={4}></SVGIconSpace>
                     </div>
                 </div>
-                <Controlls></Controlls>
+                <Controlls setSVGProps={setSvgProps} svgProps={svgProps} ></Controlls>
             </div>
         </>
     )
