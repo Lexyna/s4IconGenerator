@@ -1,25 +1,27 @@
 import { useState } from "react";
 import { Controlls } from "./Controlls";
 import { Emblem, SVGIconProps, SVGIconSpace, Symbol } from "./SVGIconSpace";
+import { path_S4S } from "./SVGSymbolPaths";
 
 export const MainView = () => {
 
     const [svgProps, setSvgProps] = useState<SVGIconProps>({
-        bgColor1: "#ebba34",
-        bgColor2: "#a87e0c",
-        cornerCol1: "#b9f2ff",
-        cornerCol2: "#1fb5d7",
+        bgColor1: "#4d4d4d",
+        bgColor2: "#000000",
+        cornerCol1: "#e0a41f",
+        cornerCol2: "#8a6412",
         corners: 0,
-        stripesCol1: "#7cdb7b",
-        stripesCol2: "#14a812",
+        stripesCol1: "#e0a41f",
+        stripesCol2: "#8a6412",
         stripes: 0,
-        Emblem: Emblem.CIRCLE,
-        EmblemCol1: "#b9f2ff",
-        EmblemCol2: "#1fb5d7",
+        Emblem: Emblem.Star,
+        EmblemCol1: "#e0a41f",
+        EmblemCol2: "#8a6412",
         EmblemOverrideBg: true,
-        Symbol: Symbol.SZ,
-        SymbolCol1: "#e68787",
-        SymbolCol2: "#cc0202"
+        Symbol: Symbol.S4,
+        SymbolCol1: "#6a6a6a",
+        SymbolCol2: "#2a2a2a",
+        SType: path_S4S
     })
 
     return (

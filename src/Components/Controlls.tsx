@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { HexColorPicker } from "react-colorful"
 import { Emblem, SVGIconProps, Symbol } from "./SVGIconSpace"
+import { FatS, path_S4S, path_s4SSharp, SleekS } from "./SVGSymbolPaths"
 
 export interface controllerProps {
     setSVGProps: (param: SVGIconProps) => void
@@ -115,6 +116,9 @@ export const Controlls = (props: controllerProps) => {
             case "Diamond": emblem = Emblem.Diamond; break;
             case "Double_Diamond": emblem = Emblem.Double_Diamond; break;
             case "Star": emblem = Emblem.Star; break;
+            case "DiamondStar": emblem = Emblem.DiamondStar; break;
+            case "TriCircle": emblem = Emblem.TriCircle; break;
+            case "DoubleTriangle": emblem = Emblem.DoubleTriangle; break;
             case "NONE": emblem = Emblem.NONE; break;
             default: break;
         }
@@ -135,15 +139,35 @@ export const Controlls = (props: controllerProps) => {
         let symbol = props.svgProps.Symbol;
 
         switch (e.currentTarget.value) {
+            case "S1": symbol = Symbol.S1; break;
             case "SS": symbol = Symbol.SS; break;
             case "SZ": symbol = Symbol.SZ; break;
+            case "S2Offset": symbol = Symbol.S2Offset; break;
             case "S3": symbol = Symbol.S3; break;
             case "S3A": symbol = Symbol.S3A; break;
+            case "S3R": symbol = Symbol.S3Roman; break;
+            case "S4": symbol = Symbol.S4; break;
+            case "S4A": symbol = Symbol.S4A; break;
             case "NONE": symbol = Symbol.NONE; break;
             default: break;
         }
 
         props.setSVGProps({ ...props.svgProps, Symbol: symbol })
+    }
+
+    const changeSType = (e: React.FormEvent<HTMLSelectElement>) => {
+
+        let sType = props.svgProps.SType;
+
+        switch (e.currentTarget.value) {
+            case "StylishS": sType = path_S4S; break;
+            case "StylishSSharp": sType = path_s4SSharp; break;
+            case "FatS": sType = FatS; break;
+            case "SleekS": sType = SleekS; break;
+            default: break;
+        }
+
+        props.setSVGProps({ ...props.svgProps, SType: sType })
     }
 
     return (
@@ -203,12 +227,14 @@ export const Controlls = (props: controllerProps) => {
                                 <input type="text" value={emblemColor2} onChange={e => changeEmblemColor2(e.currentTarget.value)}></input>
                             </div>
                         </div>
-                        <select onChange={e => changeEmblem(e)}>
+                        <select onChange={e => changeEmblem(e)} defaultValue="Star">
                             <option value="Circle">Circle</option>
                             <option value="Inv_Tri">Inverted Triangle</option>
                             <option value="Diamond">Diamond</option>
                             <option value="Double_Diamond">Double Diamond</option>
                             <option value="Star">Star</option>
+                            <option value="TriCircle">TriCircle</option>
+                            <option value="DoubleTriangle">DoubleTriangle</option>
                             <option value="NONE">None</option>
                         </select>
                         <div style={{ display: " flex" }}>
@@ -228,15 +254,30 @@ export const Controlls = (props: controllerProps) => {
                                 <input type="text" value={symbolColor2} onChange={e => changeSymbolColor2(e.currentTarget.value)}></input>
                             </div>
                         </div>
-                        <select onChange={e => changeSymbol(e)}>
+                        <select onChange={e => changeSymbol(e)} defaultValue="S4">
+                            <option value="S1">S1</option>
                             <option value="SZ">SZ</option>
                             <option value="SS">S2</option>
+                            <option value="S2Offset">S2 Offset</option>
                             <option value="S3">S3</option>
                             <option value="S3A">S3 Alternative</option>
+                            <option value="S3R">S3 Roman</option>
+                            <option value="S4">S4</option>
+                            <option value="S4A">S4 Alternative</option>
                             <option value="NONE">NONE</option>
                         </select>
                     </div>
+                    <div style={{ display: "grid" }}>
+                        S-Type
+                        <select onChange={e => changeSType(e)} defaultValue="S4">
+                            <option value="StylishS">Stylish S</option>
+                            <option value="StylishSSharp">Stylish S Sharp</option>
+                            <option value="FatS">Fat S</option>
+                            <option value="SleekS">Sleek S</option>
+                        </select>
+                    </div>
                 </div>
+
 
             </div>
         </>
