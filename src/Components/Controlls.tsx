@@ -53,7 +53,7 @@ export const Controlls = (props: controllerProps) => {
         setCornerColor2(e)
         props.setSVGProps({
             ...props.svgProps,
-            cornerCol1: e
+            cornerCol2: e
         })
     }
 
@@ -137,6 +137,7 @@ export const Controlls = (props: controllerProps) => {
         switch (e.currentTarget.value) {
             case "SS": symbol = Symbol.SS; break;
             case "SZ": symbol = Symbol.SZ; break;
+            case "S3": symbol = Symbol.S3; break;
             case "NONE": symbol = Symbol.NONE; break;
             default: break;
         }
@@ -228,7 +229,8 @@ export const Controlls = (props: controllerProps) => {
                         </div>
                         <select onChange={e => changeSymbol(e)}>
                             <option value="SZ">SZ</option>
-                            <option value="SS">SS</option>
+                            <option value="SS">S2</option>
+                            <option value="S3">S3</option>
                             <option value="NONE">NONE</option>
                         </select>
                     </div>
