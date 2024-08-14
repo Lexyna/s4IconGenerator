@@ -16,6 +16,7 @@ export const MainView = () => {
         Emblem: Emblem.CIRCLE,
         EmblemCol1: "#b9f2ff",
         EmblemCol2: "#1fb5d7",
+        EmblemOverrideBg: true,
         Symbol: Symbol.SZ,
         SymbolCol1: "#e68787",
         SymbolCol2: "#cc0202"

@@ -10,19 +10,23 @@ export interface SVGIconProps {
     stripes: number,
     Emblem: Emblem,
     EmblemCol1: string,
-    EmblemCol2: string
+    EmblemCol2: string,
+    EmblemOverrideBg: boolean,
     Symbol: Symbol,
     SymbolCol1: string,
     SymbolCol2: string
 }
 
 export enum Emblem {
-    CIRCLE
+    CIRCLE,
+    INVERTED_TRIANGLE,
+    NONE
 }
 
 export enum Symbol {
     SZ,
-    SS
+    SS,
+    NONE
 }
 
 export const SVGIconSpace = (props: SVGIconProps) => {
@@ -93,8 +97,12 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                     </>
                     : <></>}
                 {props.Emblem == Emblem.CIRCLE ? <>
-                    <circle cx={50} cy={50} r={33} fill="url(#bgGradient)"></circle>
+                    {props.EmblemOverrideBg ? <circle cx={50} cy={50} r={33} fill="url(#bgGradient)"></circle> : <></>}
                     <circle cx={50} cy={50} r={33} fill="none" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></circle>
+                </> : <></>}
+                {props.Emblem == Emblem.INVERTED_TRIANGLE ? <>
+                    {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 20 80, 80 80, 0" ></polygon> : <></>}
+                    <polygon fill="none" points="50 20, 20 80, 80 80, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                 </> : <></>}
                 {props.Symbol == Symbol.SZ ?
                     <>

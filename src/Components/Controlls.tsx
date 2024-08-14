@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { HexColorPicker } from "react-colorful"
-import { SVGIconProps, Symbol } from "./SVGIconSpace"
+import { Emblem, SVGIconProps, Symbol } from "./SVGIconSpace"
 
 export interface controllerProps {
     setSVGProps: (param: SVGIconProps) => void
@@ -105,6 +105,28 @@ export const Controlls = (props: controllerProps) => {
         })
     }
 
+    const changeEmblem = (e: React.FormEvent<HTMLSelectElement>) => {
+
+        let emblem = props.svgProps.Emblem;
+
+        switch (e.currentTarget.value) {
+            case "Circle": emblem = Emblem.CIRCLE; break;
+            case "Inv_Tri": emblem = Emblem.INVERTED_TRIANGLE; break;
+            case "NONE": emblem = Emblem.NONE; break;
+            default: break;
+        }
+
+
+        props.setSVGProps({ ...props.svgProps, Emblem: emblem })
+    }
+
+    const setEmblemOverride = () => {
+        props.setSVGProps({
+            ...props.svgProps,
+            EmblemOverrideBg: !props.svgProps.EmblemOverrideBg
+        })
+    }
+
     const changeSymbol = (e: React.FormEvent<HTMLSelectElement>) => {
 
         let symbol = props.svgProps.Symbol;
@@ -112,9 +134,9 @@ export const Controlls = (props: controllerProps) => {
         switch (e.currentTarget.value) {
             case "SS": symbol = Symbol.SS; break;
             case "SZ": symbol = Symbol.SZ; break;
+            case "NONE": symbol = Symbol.NONE; break;
             default: break;
         }
-
 
         props.setSVGProps({ ...props.svgProps, Symbol: symbol })
     }
@@ -176,9 +198,15 @@ export const Controlls = (props: controllerProps) => {
                                 <input type="text" value={emblemColor2} onChange={e => changeEmblemColor2(e.currentTarget.value)}></input>
                             </div>
                         </div>
-                        <select>
+                        <select onChange={e => changeEmblem(e)}>
                             <option value="Circle">Circle</option>
+                            <option value="Inv_Tri">Inverted Triangle</option>
+                            <option value="NONE">None</option>
                         </select>
+                        <div style={{ display: " flex" }}>
+                            <label>Override Background</label>
+                            <input type="checkbox" defaultChecked={props.svgProps.EmblemOverrideBg} onChange={setEmblemOverride}></input>
+                        </div>
                     </div>
                     <div style={{ display: "grid" }}>
                         Symbol:
@@ -195,6 +223,7 @@ export const Controlls = (props: controllerProps) => {
                         <select onChange={e => changeSymbol(e)}>
                             <option value="SZ">SZ</option>
                             <option value="SS">SS</option>
+                            <option value="NONE">NONE</option>
                         </select>
                     </div>
                 </div>
