@@ -170,6 +170,25 @@ export const Controlls = (props: controllerProps) => {
         props.setSVGProps({ ...props.svgProps, SType: sType })
     }
 
+    const loadQuickConfig = async () => {
+
+        const quickConfig: string = await navigator.clipboard.readText();
+
+        const conf: SVGIconProps = JSON.parse(quickConfig);
+
+        setBgColor1(conf.bgColor1)
+        setBgColor2(conf.bgColor2)
+        setCornerColor1(conf.cornerCol1)
+        setCornerColor2(conf.cornerCol2)
+        setStripesColor1(conf.stripesCol1)
+        setStripesColor1(conf.stripesCol2)
+        setEmblemColor1(conf.stripesCol1)
+        setEmblemColor2(conf.EmblemCol2)
+        setSymbolColor1(conf.SymbolCol1)
+        setSymbolColor2(conf.stripesCol2)
+        props.setSVGProps({ ...conf })
+    }
+
     return (
         <>
             <div style={{ paddingLeft: "0rem", marginRight: "0rem", display: "flex" }}>
@@ -276,10 +295,29 @@ export const Controlls = (props: controllerProps) => {
                             <option value="SleekS">Sleek S</option>
                         </select>
                     </div>
+                    <div>
+                        <div style={{ display: "grid" }}>
+                            QuickConfig
+                            <textarea style={{ height: "16rem" }}
+                                value={SVGPropsToString(props.svgProps)}
+                            ></textarea>
+                            <button style={{ backgroundColor: "gray" }} onClick={loadQuickConfig}>Import/Paste</button>
+                        </div>
+                    </div>
                 </div>
 
 
-            </div>
+            </div >
         </>
     )
+}
+
+const SVGPropsToString = (val: SVGIconProps) => {
+
+    const quickConfig: string = JSON.stringify(val, null, "\t").replace(
+        "],\n\t\"",
+        "],\n\n\t\""
+    );;
+
+    return quickConfig;
 }
