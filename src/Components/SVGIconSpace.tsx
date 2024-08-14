@@ -218,10 +218,11 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                     <>
                         <path strokeWidth="4" fill="url(#SymbolGradient)"
                             d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" />
+                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"
+                            transform="translate(6)" />
                         <path strokeWidth="4" fill="url(#SymbolGradient)"
                             d={stylish3}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(2)" />
+                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(0 8)" />
                     </> :
                     <></>}
                 {props.Symbol == Symbol.S3Roman ?
