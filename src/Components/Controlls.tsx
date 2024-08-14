@@ -126,40 +126,71 @@ export const Controlls = (props: controllerProps) => {
                     <div style={{ display: "grid" }}>
                         <div style={{ paddingRight: "20px" }}>Background:</div>
                         <div style={{ display: "flex" }}>
-                            <HexColorPicker color={bgColor1} onChange={changeBGColor1}></HexColorPicker>
-                            <HexColorPicker color={bgColor2} onChange={changeBGColor2}></HexColorPicker>
+                            <div>
+                                <HexColorPicker color={bgColor1} onChange={changeBGColor1}></HexColorPicker>
+                                <input type="text" value={bgColor1} onChange={e => changeBGColor1(e.currentTarget.value)}></input>
+                            </div>
+                            <div>
+                                <HexColorPicker color={bgColor2} onChange={changeBGColor2}></HexColorPicker>
+                                <input type="text" value={bgColor2} onChange={e => changeBGColor2(e.currentTarget.value)}></input>
+                            </div>
                         </div>
                     </div>
                     <div style={{ display: "grid" }}>
                         <div style={{ paddingRight: "20px" }}>Corner:</div>
                         <div style={{ display: "flex" }}>
-                            <HexColorPicker color={cornerColor1} onChange={changeCornerColor1}></HexColorPicker>
-                            <HexColorPicker color={cornerColor2} onChange={changeCornerColor2}></HexColorPicker>
+                            <div>
+                                <HexColorPicker color={cornerColor1} onChange={changeCornerColor1}></HexColorPicker>
+                                <input type="text" value={cornerColor1} onChange={e => changeCornerColor1(e.currentTarget.value)}></input>
+                            </div>
+                            <div>
+                                <HexColorPicker color={cornerColor2} onChange={changeCornerColor2}></HexColorPicker>
+                                <input type="text" value={cornerColor2} onChange={e => changeCornerColor2(e.currentTarget.value)}></input>
+                            </div>
                         </div>
                     </div>
                     <div style={{ display: "grid" }}>
                         Stripes:
                         <div style={{ display: "flex" }}>
-                            <HexColorPicker color={stripesColor1} onChange={changeStripesColor1}></HexColorPicker>
-                            <HexColorPicker color={stripesColor2} onChange={changeStripesColor2}></HexColorPicker>
+                            <div>
+                                <HexColorPicker color={stripesColor1} onChange={changeStripesColor1}></HexColorPicker>
+                                <input type="text" value={stripesColor1} onChange={e => changeStripesColor1(e.currentTarget.value)}></input>
+                            </div>
+                            <div>
+                                <HexColorPicker color={stripesColor2} onChange={changeStripesColor2}></HexColorPicker>
+                                <input type="text" value={stripesColor2} onChange={e => changeStripesColor2(e.currentTarget.value)}></input>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div>                <div style={{ display: "grid" }}>
-                    Emblem:
-                    <div style={{ display: "flex" }}>
-                        <HexColorPicker color={emblemColor1} onChange={changeEmblemColor1}></HexColorPicker>
-                        <HexColorPicker color={emblemColor2} onChange={changeEmblemColor2}></HexColorPicker>
+                <div>
+                    <div style={{ display: "grid" }}>
+                        Emblem:
+                        <div style={{ display: "flex" }}>
+                            <div>
+                                <HexColorPicker color={emblemColor1} onChange={changeEmblemColor1}></HexColorPicker>
+                                <input type="text" value={emblemColor1} onChange={e => changeEmblemColor1(e.currentTarget.value)}></input>
+                            </div>
+                            <div>
+                                <HexColorPicker color={emblemColor2} onChange={changeEmblemColor2}></HexColorPicker>
+                                <input type="text" value={emblemColor2} onChange={e => changeEmblemColor2(e.currentTarget.value)}></input>
+                            </div>
+                        </div>
+                        <select>
+                            <option value="Circle">Circle</option>
+                        </select>
                     </div>
-                    <select>
-                        <option value="Circle">Circle</option>
-                    </select>
-                </div>
                     <div style={{ display: "grid" }}>
                         Symbol:
                         <div style={{ display: "flex" }}>
-                            <HexColorPicker color={symbolColor1} onChange={changeSymbolColor1}></HexColorPicker>
-                            <HexColorPicker color={symbolColor2} onChange={changeSymbolColor2}></HexColorPicker>
+                            <div>
+                                <HexColorPicker color={symbolColor1} onChange={changeSymbolColor1}></HexColorPicker>
+                                <input type="text" value={symbolColor1} onChange={e => changeSymbolColor1(e.currentTarget.value)}></input>
+                            </div>
+                            <div>
+                                <HexColorPicker color={symbolColor2} onChange={changeSymbolColor2}></HexColorPicker>
+                                <input type="text" value={symbolColor2} onChange={e => changeSymbolColor2(e.currentTarget.value)}></input>
+                            </div>
                         </div>
                         <select onChange={e => changeSymbol(e)}>
                             <option value="SZ">SZ</option>
