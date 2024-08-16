@@ -290,7 +290,7 @@ export const Controlls = (props: controllerProps) => {
                     </div>
                     <div style={{ display: "grid" }}>
                         S-Type
-                        <select onChange={e => changeSType(e)} defaultValue="OriginalS">
+                        <select onChange={e => changeSType(e)} defaultValue="StylishS">
                             <option value="StylishS">Stylish S</option>
                             <option value="StylishSSharp">Stylish S Sharp</option>
                             <option value="OriginalS">Original S</option>
