@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid"
 import React, { useState } from "react"
 import { HexColorInput } from "react-colorful"
 import { PopoverPicker } from "./PopoverPicker"
@@ -143,7 +144,7 @@ export const Controls = (props: controllerProps) => {
     const addNewSymbol = () => {
 
         const newSymbolConf = props.svgProps.symbolConfig.slice(0);
-        newSymbolConf.push(defaultSymbolConf);
+        newSymbolConf.push({ ...defaultSymbolConf, id: nanoid() });
 
         console.log(newSymbolConf)
 
