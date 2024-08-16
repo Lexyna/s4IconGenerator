@@ -35,6 +35,7 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
 
     const [color1, setColor1] = useState(props.color1);
     const [color2, setColor2] = useState(props.color2);
+    const [symbolType, setSymbolType] = useState<string>(loadSymbolFromPath(props.svg_path));
 
     const changeSymbolType = (e: React.FormEvent<HTMLSelectElement>) => {
 
@@ -93,7 +94,7 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
                     </div>
                     <div style={{ display: " flex", paddingLeft: "0.5rem" }}>
                         <label style={{ marginRight: "0.5rem" }}>Symbol: </label>
-                        <select defaultValue="SleekS" onChange={e => changeSymbolType(e)}>
+                        <select defaultValue={symbolType} onChange={e => changeSymbolType(e)}>
                             <option value="SleekS">SleekS</option>
                             <option value="FatS">FatS</option>
                             <option value="StylishS">StylishS</option>
@@ -112,4 +113,22 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
             </>
         </div>
     )
+}
+
+const loadSymbolFromPath = (path: string): string => {
+
+    switch (path) {
+        case SleekS: return "SleekS";
+        case FatS: return "FatS";
+        case path_S4S: return "StylishS";
+        case path_s4SSharp: return "SharperStylishS";
+        case path_originalS: return "OriginalS";
+        case leaning_One: return "leaningOne";
+        case stylish3: return "stylish3";
+        case normal4: return "normal4";
+        case leaning4: return "leaning4";
+        case stylish4: return "Stylish4";
+        case path_Z: return "Z";
+        default: return "SleekS";
+    }
 }
