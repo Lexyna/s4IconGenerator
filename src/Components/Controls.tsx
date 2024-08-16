@@ -1,14 +1,16 @@
+import { nanoid } from "nanoid"
 import React, { useState } from "react"
-import { HexColorPicker } from "react-colorful"
-import { Emblem, SVGIconProps, Symbol } from "./SVGIconSpace"
-import { FatS, path_originalS, path_S4S, path_s4SSharp, SleekS } from "./SVGSymbolPaths"
+import { HexColorInput } from "react-colorful"
+import { PopoverPicker } from "./PopoverPicker"
+import { Emblem, SVGIconProps } from "./SVGIconSpace"
+import { defaultSymbolConf, symbolConfig, SymbolControlls } from "./SymbolControlls"
 
 export interface controllerProps {
     setSVGProps: (param: SVGIconProps) => void
     svgProps: SVGIconProps
 }
 
-export const Controlls = (props: controllerProps) => {
+export const Controls = (props: controllerProps) => {
 
     const [bgColor1, setBgColor1] = useState(props.svgProps.bgColor1);
     const [bgColor2, setBgColor2] = useState(props.svgProps.bgColor2);
@@ -22,9 +24,7 @@ export const Controlls = (props: controllerProps) => {
     const [emblemColor1, setEmblemColor1] = useState(props.svgProps.EmblemCol1);
     const [emblemColor2, setEmblemColor2] = useState(props.svgProps.EmblemCol2);
 
-    const [symbolColor1, setSymbolColor1] = useState(props.svgProps.SymbolCol1);
-    const [symbolColor2, setSymbolColor2] = useState(props.svgProps.SymbolCol2);
-
+    const [symbolConfigs, setSymbolConfigs] = useState<symbolConfig[]>(props.svgProps.symbolConfig);
 
     const changeBGColor1 = (e: string) => {
         setBgColor1(e)
@@ -90,22 +90,6 @@ export const Controlls = (props: controllerProps) => {
         })
     }
 
-    const changeSymbolColor1 = (e: string) => {
-        setSymbolColor1(e)
-        props.setSVGProps({
-            ...props.svgProps,
-            SymbolCol1: e
-        })
-    }
-
-    const changeSymbolColor2 = (e: string) => {
-        setSymbolColor2(e)
-        props.setSVGProps({
-            ...props.svgProps,
-            SymbolCol2: e
-        })
-    }
-
     const changeEmblem = (e: React.FormEvent<HTMLSelectElement>) => {
 
         let emblem = props.svgProps.Emblem;
@@ -134,41 +118,41 @@ export const Controlls = (props: controllerProps) => {
         })
     }
 
-    const changeSymbol = (e: React.FormEvent<HTMLSelectElement>) => {
+    const setSymbolConfig = (sym: symbolConfig) => {
 
-        let symbol = props.svgProps.Symbol;
+        const newSymbolConfig = symbolConfigs.slice(0);
 
-        switch (e.currentTarget.value) {
-            case "S1": symbol = Symbol.S1; break;
-            case "SS": symbol = Symbol.SS; break;
-            case "SZ": symbol = Symbol.SZ; break;
-            case "S2Offset": symbol = Symbol.S2Offset; break;
-            case "S3": symbol = Symbol.S3; break;
-            case "S3A": symbol = Symbol.S3A; break;
-            case "S3R": symbol = Symbol.S3Roman; break;
-            case "S4": symbol = Symbol.S4; break;
-            case "S4A": symbol = Symbol.S4A; break;
-            case "NONE": symbol = Symbol.NONE; break;
-            default: break;
-        }
+        newSymbolConfig.forEach(s => {
+            if (s.id != sym.id) return
+            s.color1 = sym.color1;
+            s.color2 = sym.color2;
+            s.offsetX = sym.offsetX;
+            s.offsetY = sym.offsetY;
+            s.flip = sym.flip;
+            s.svg_path = sym.svg_path;
+        });
 
-        props.setSVGProps({ ...props.svgProps, Symbol: symbol })
+        props.setSVGProps({ ...props.svgProps, symbolConfig: newSymbolConfig });
     }
 
-    const changeSType = (e: React.FormEvent<HTMLSelectElement>) => {
+    const addNewSymbol = () => {
 
-        let sType = props.svgProps.SType;
+        const newSymbolConf = props.svgProps.symbolConfig.slice(0);
+        newSymbolConf.push({ ...defaultSymbolConf, id: nanoid() });
 
-        switch (e.currentTarget.value) {
-            case "OriginalS": sType = path_originalS; break
-            case "StylishS": sType = path_S4S; break
-            case "StylishSSharp": sType = path_s4SSharp; break;
-            case "FatS": sType = FatS; break;
-            case "SleekS": sType = SleekS; break;
-            default: break;
-        }
+        setSymbolConfigs(newSymbolConf);
+        props.setSVGProps({ ...props.svgProps, symbolConfig: newSymbolConf });
+    }
 
-        props.setSVGProps({ ...props.svgProps, SType: sType })
+    const deleteSymbol = (sym: symbolConfig) => {
+
+        const newSymbolConf = props.svgProps.symbolConfig.slice(0);
+        for (let i = newSymbolConf.length - 1; i >= 0; i--)
+            if (newSymbolConf[i].id == sym.id)
+                newSymbolConf.splice(i, 1);
+
+        setSymbolConfigs(newSymbolConf);
+        props.setSVGProps({ ...props.svgProps, symbolConfig: newSymbolConf });
     }
 
     const loadQuickConfig = async () => {
@@ -185,8 +169,7 @@ export const Controlls = (props: controllerProps) => {
         setStripesColor1(conf.stripesCol2)
         setEmblemColor1(conf.stripesCol1)
         setEmblemColor2(conf.EmblemCol2)
-        setSymbolColor1(conf.SymbolCol1)
-        setSymbolColor2(conf.stripesCol2)
+        setSymbolConfigs(conf.symbolConfig);
         props.setSVGProps({ ...conf })
     }
 
@@ -198,12 +181,12 @@ export const Controlls = (props: controllerProps) => {
                         <div style={{ paddingRight: "20px" }}>Background:</div>
                         <div style={{ display: "flex" }}>
                             <div>
-                                <HexColorPicker color={bgColor1} onChange={changeBGColor1}></HexColorPicker>
-                                <input type="text" value={bgColor1} onChange={e => changeBGColor1(e.currentTarget.value)}></input>
+                                <PopoverPicker color={bgColor1} onChange={changeBGColor1}></PopoverPicker>
+                                <HexColorInput color={bgColor1} onChange={changeBGColor1}></HexColorInput>
                             </div>
                             <div>
-                                <HexColorPicker color={bgColor2} onChange={changeBGColor2}></HexColorPicker>
-                                <input type="text" value={bgColor2} onChange={e => changeBGColor2(e.currentTarget.value)}></input>
+                                <PopoverPicker color={bgColor2} onChange={changeBGColor2}></PopoverPicker>
+                                <HexColorInput color={bgColor2} onChange={changeBGColor2}></HexColorInput>
                             </div>
                         </div>
                     </div>
@@ -211,12 +194,12 @@ export const Controlls = (props: controllerProps) => {
                         <div style={{ paddingRight: "20px" }}>Corner:</div>
                         <div style={{ display: "flex" }}>
                             <div>
-                                <HexColorPicker color={cornerColor1} onChange={changeCornerColor1}></HexColorPicker>
-                                <input type="text" value={cornerColor1} onChange={e => changeCornerColor1(e.currentTarget.value)}></input>
+                                <PopoverPicker color={cornerColor1} onChange={changeCornerColor1}></PopoverPicker>
+                                <HexColorInput color={cornerColor1} onChange={changeCornerColor1}></HexColorInput>
                             </div>
                             <div>
-                                <HexColorPicker color={cornerColor2} onChange={changeCornerColor2}></HexColorPicker>
-                                <input type="text" value={cornerColor2} onChange={e => changeCornerColor2(e.currentTarget.value)}></input>
+                                <PopoverPicker color={cornerColor2} onChange={changeCornerColor2}></PopoverPicker>
+                                <HexColorInput color={cornerColor2} onChange={changeCornerColor2}></HexColorInput>
                             </div>
                         </div>
                     </div>
@@ -224,30 +207,29 @@ export const Controlls = (props: controllerProps) => {
                         Stripes:
                         <div style={{ display: "flex" }}>
                             <div>
-                                <HexColorPicker color={stripesColor1} onChange={changeStripesColor1}></HexColorPicker>
-                                <input type="text" value={stripesColor1} onChange={e => changeStripesColor1(e.currentTarget.value)}></input>
+                                <PopoverPicker color={stripesColor1} onChange={changeStripesColor1}></PopoverPicker>
+                                <HexColorInput color={stripesColor1} onChange={changeStripesColor1}></HexColorInput>
                             </div>
                             <div>
-                                <HexColorPicker color={stripesColor2} onChange={changeStripesColor2}></HexColorPicker>
-                                <input type="text" value={stripesColor2} onChange={e => changeStripesColor2(e.currentTarget.value)}></input>
+                                <PopoverPicker color={stripesColor2} onChange={changeStripesColor2}></PopoverPicker>
+                                <HexColorInput color={stripesColor2} onChange={changeStripesColor2}></HexColorInput>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div>
                     <div style={{ display: "grid" }}>
                         Emblem:
                         <div style={{ display: "flex" }}>
                             <div>
-                                <HexColorPicker color={emblemColor1} onChange={changeEmblemColor1}></HexColorPicker>
-                                <input type="text" value={emblemColor1} onChange={e => changeEmblemColor1(e.currentTarget.value)}></input>
+                                <PopoverPicker color={emblemColor1} onChange={changeEmblemColor1}></PopoverPicker>
+                                <HexColorInput color={emblemColor1} onChange={changeEmblemColor1}></HexColorInput>
                             </div>
                             <div>
-                                <HexColorPicker color={emblemColor2} onChange={changeEmblemColor2}></HexColorPicker>
-                                <input type="text" value={emblemColor2} onChange={e => changeEmblemColor2(e.currentTarget.value)}></input>
+                                <PopoverPicker color={emblemColor2} onChange={changeEmblemColor2}></PopoverPicker>
+                                <HexColorInput color={emblemColor2} onChange={changeEmblemColor2}></HexColorInput>
                             </div>
                         </div>
-                        <select onChange={e => changeEmblem(e)} defaultValue="Star">
+                        <select style={{ width: "80%", marginLeft: "0.5rem", marginTop: "0.5rem" }}
+                            onChange={e => changeEmblem(e)} defaultValue="Star">
                             <option value="Circle">Circle</option>
                             <option value="Inv_Tri">Inverted Triangle</option>
                             <option value="Diamond">Diamond</option>
@@ -257,51 +239,25 @@ export const Controlls = (props: controllerProps) => {
                             <option value="DoubleTriangle">DoubleTriangle</option>
                             <option value="NONE">None</option>
                         </select>
-                        <div style={{ display: " flex" }}>
+                        <div style={{ display: " flex", marginLeft: "0.5rem" }}>
                             <label>Override Background</label>
                             <input type="checkbox" defaultChecked={props.svgProps.EmblemOverrideBg} onChange={setEmblemOverride}></input>
                         </div>
                     </div>
-                    <div style={{ display: "grid" }}>
-                        Symbol:
-                        <div style={{ display: "flex" }}>
-                            <div>
-                                <HexColorPicker color={symbolColor1} onChange={changeSymbolColor1}></HexColorPicker>
-                                <input type="text" value={symbolColor1} onChange={e => changeSymbolColor1(e.currentTarget.value)}></input>
-                            </div>
-                            <div>
-                                <HexColorPicker color={symbolColor2} onChange={changeSymbolColor2}></HexColorPicker>
-                                <input type="text" value={symbolColor2} onChange={e => changeSymbolColor2(e.currentTarget.value)}></input>
-                            </div>
-                        </div>
-                        <select onChange={e => changeSymbol(e)} defaultValue="S4">
-                            <option value="S1">S1</option>
-                            <option value="SZ">SZ</option>
-                            <option value="SS">S2</option>
-                            <option value="S2Offset">S2 Offset</option>
-                            <option value="S3">S3</option>
-                            <option value="S3A">S3 Alternative</option>
-                            <option value="S3R">S3 Roman</option>
-                            <option value="S4">S4</option>
-                            <option value="S4A">S4 Alternative</option>
-                            <option value="NONE">NONE</option>
-                        </select>
+                </div>
+                <div>
+                    <div style={{ marginBottom: "0.5rem" }}>
+                        Symbol Config:
+                        <button style={{ marginLeft: "0.5rem" }} onClick={addNewSymbol}>Add Symbol</button>
                     </div>
-                    <div style={{ display: "grid" }}>
-                        S-Type
-                        <select onChange={e => changeSType(e)} defaultValue="OriginalS">
-                            <option value="StylishS">Stylish S</option>
-                            <option value="StylishSSharp">Stylish S Sharp</option>
-                            <option value="OriginalS">Original S</option>
-                            <option value="FatS">Fat S</option>
-                            <option value="SleekS">Sleek S</option>
-                        </select>
-                    </div>
+                    {symbolConfigs.map((sym: symbolConfig) => {
+                        return <SymbolControlls {...sym} setSymbol={setSymbolConfig} deleteSymbol={deleteSymbol} key={sym.id}></SymbolControlls>
+                    })}
                 </div>
                 <div style={{ paddingLeft: "2rem", }}>
                     <div style={{ display: "grid" }}>
                         QuickConfig
-                        <textarea style={{ height: "20rem", width: "20rem" }}
+                        <textarea style={{ height: "70vh", width: "20rem" }}
                             value={SVGPropsToString(props.svgProps)}
                             readOnly
                         ></textarea>
