@@ -68,7 +68,7 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
     }
 
     return (
-        <div className="symConf">
+        <div className="symConf" style={{ marginBottom: "0.5rem" }}>
             <>
                 <div style={{ display: "block", paddingBottom: "1rem", alignItems: "flex-start" }}>
                     <div >
@@ -105,7 +105,6 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
                             <option value="Stylish4">stylish 4</option>
                             <option value="Z">Z</option>
                         </select>
-                        <button className="symbolBtn">Add</button>
                         <button className="symbolBtn">Delete</button>
                     </div>
                 </div>

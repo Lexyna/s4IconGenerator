@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { HexColorInput } from "react-colorful"
 import { PopoverPicker } from "./PopoverPicker"
 import { Emblem, SVGIconProps } from "./SVGIconSpace"
-import { symbolConfig, SymbolControlls } from "./SymbolControlls"
+import { defaultSymbolConf, symbolConfig, SymbolControlls } from "./SymbolControlls"
 
 export interface controllerProps {
     setSVGProps: (param: SVGIconProps) => void
@@ -121,6 +121,9 @@ export const Controls = (props: controllerProps) => {
 
         const newSymbolConfig = symbolConfigs.slice(0);
 
+        console.log("before")
+        console.log(symbolConfigs)
+
         newSymbolConfig.forEach(s => {
             if (s.id != sym.id) return
             s.color1 = sym.color1;
@@ -131,7 +134,21 @@ export const Controls = (props: controllerProps) => {
             s.svg_path = sym.svg_path;
         });
 
+        console.log("change")
+        console.log(newSymbolConfig)
+
         props.setSVGProps({ ...props.svgProps, symbolConfig: newSymbolConfig });
+    }
+
+    const addNewSymbol = () => {
+
+        const newSymbolConf = props.svgProps.symbolConfig.slice(0);
+        newSymbolConf.push(defaultSymbolConf);
+
+        console.log(newSymbolConf)
+
+        setSymbolConfigs(newSymbolConf);
+        props.setSVGProps({ ...props.svgProps, symbolConfig: newSymbolConf });
     }
 
     const loadQuickConfig = async () => {
@@ -226,7 +243,10 @@ export const Controls = (props: controllerProps) => {
                     </div>
                 </div>
                 <div>
-                    Symbol Config:
+                    <div style={{ marginBottom: "0.5rem" }}>
+                        Symbol Config:
+                        <button style={{ marginLeft: "0.5rem" }} onClick={addNewSymbol}>Add Symbol</button>
+                    </div>
                     {symbolConfigs.map((sym: symbolConfig) => {
                         return <SymbolControlls {...sym} setSymbol={setSymbolConfig}></SymbolControlls>
                     })}
