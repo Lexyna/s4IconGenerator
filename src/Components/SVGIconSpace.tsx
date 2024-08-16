@@ -62,7 +62,7 @@ export const SVGIconSpace = (props: SVGIconProps) => {
     }
 
     return (
-        <span >
+        <span style={{ "paddingLeft": "0px" }}>
             <svg viewBox="0 0 100 100" width={120} height={120} ref={svgRef} onClick={download}>
                 <defs>
                     <linearGradient id="bgGradient" x1={0} x2={0} y1={0} y2={1}>

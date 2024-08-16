@@ -27,7 +27,7 @@ export const MainView = () => {
     return (
         <>
             <div style={{ display: "flex" }}>
-                <div>
+                <div style={{ paddingTop: "1.5rem" }}>
                     <div style={{ display: "flex" }}>
                         <SVGIconSpace {...svgProps} corners={1}></SVGIconSpace>
                         <SVGIconSpace {...svgProps} corners={2}></SVGIconSpace>

@@ -295,19 +295,17 @@ export const Controlls = (props: controllerProps) => {
                             <option value="SleekS">Sleek S</option>
                         </select>
                     </div>
-                    <div>
-                        <div style={{ display: "grid" }}>
-                            QuickConfig
-                            <textarea style={{ height: "16rem" }}
-                                value={SVGPropsToString(props.svgProps)}
-                                readOnly
-                            ></textarea>
-                            <button style={{ backgroundColor: "gray" }} onClick={loadQuickConfig}>Import/Paste</button>
-                        </div>
+                </div>
+                <div style={{ paddingLeft: "2rem", }}>
+                    <div style={{ display: "grid" }}>
+                        QuickConfig
+                        <textarea style={{ height: "20rem", width: "20rem" }}
+                            value={SVGPropsToString(props.svgProps)}
+                            readOnly
+                        ></textarea>
+                        <button style={{ backgroundColor: "gray" }} onClick={loadQuickConfig}>Import/Paste</button>
                     </div>
                 </div>
-
-
             </div >
         </>
     )
