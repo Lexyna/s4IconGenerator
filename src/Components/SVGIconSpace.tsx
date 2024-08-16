@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { leaning_One, normal4, path_Z, stylish3, stylish4 } from "./SVGSymbolPaths";
+import { symbolConfig } from "./SymbolControlls";
 
 export interface SVGIconProps {
     bgColor1: string,
@@ -18,6 +18,7 @@ export interface SVGIconProps {
     SymbolCol1: string,
     SymbolCol2: string,
     SType: string,
+    symbolConfig: symbolConfig[]
 }
 
 export enum Emblem {
@@ -80,10 +81,6 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                     <linearGradient id="EmblemGradient" x1={0} x2={1} y1={0} y2={1}>
                         <stop stopColor={props.EmblemCol1} offset="0%"></stop>
                         <stop stopColor={props.EmblemCol2} offset="100%"></stop>
-                    </linearGradient>
-                    <linearGradient id="SymbolGradient" x1={0} x2={0} y1={0} y2={1}>
-                        <stop stopColor={props.SymbolCol1} offset="0%"></stop>
-                        <stop stopColor={props.SymbolCol2} offset="100%"></stop>
                     </linearGradient>
                 </defs>
                 <rect x={0} y={0} width="100%" height="100%" fill="url(#bgGradient)"></rect>
@@ -172,110 +169,21 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                     <polygon fill="none" points="50 20, 20 75, 80 75, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                     <polygon fill="none" points="20 25, 50 80, 80 25, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                 </> : <></>}
-                {props.Symbol == Symbol.S1 ?
-                    <>
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(8 -4)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)" transform="translate(-10 4)"
-                            d={leaning_One}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"
-                        />
-                    </> :
-                    <></>}
-                {props.Symbol == Symbol.SZ ?
-                    <>
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"
-                            transform="translate(5)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)" transform="translate(-5 6)"
-                            d={path_Z}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" />
-                    </> :
-                    <></>}
-                {props.Symbol == Symbol.SS ?
-                    <>
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(105), scale(-1, 1)" />
-                    </> :
-                    <></>}
-                {props.Symbol == Symbol.S2Offset ?
-                    <>
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"
-                            transform="translate(8 -7)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(99 7), scale(-1, 1)" />
-                    </> :
-                    <></>}
-                {props.Symbol == Symbol.S3 ?
-                    <>
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(0 -10)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(30 -10)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(15 10)" />
-
-                    </> :
-                    <></>}
-                {props.Symbol == Symbol.S3A ?
-                    <>
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"
-                            transform="translate(6)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={stylish3}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(0 8)" />
-                    </> :
-                    <></>}
-                {props.Symbol == Symbol.S3Roman ?
-                    <>
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(8 -5)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={leaning_One}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(-12 8)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={leaning_One}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(0 8)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={leaning_One}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(12 8)" />
-                    </> :
-                    <></>}
-                {props.Symbol == Symbol.S4 ?
-                    <>
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={stylish4}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(-4 -10)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(4 2)" />
-                    </> :
-                    <></>}
-                {props.Symbol == Symbol.S4A ?
-                    <>
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(2 0)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={normal4}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(-2 -10)" />
-                    </> :
-                    <></>}
+                {props.symbolConfig.map((symbol => {
+                    return (
+                        <>
+                            <defs>
+                                <linearGradient id={`Gradient${symbol.id}`} x1={0} x2={0} y1={0} y2={1}>
+                                    <stop stopColor={symbol.color1} offset="0%"></stop>
+                                    <stop stopColor={symbol.color2} offset="100%"></stop>
+                                </linearGradient>
+                            </defs>
+                            <path strokeWidth="4" fill={`url(#Gradient${symbol.id})`}
+                                d={symbol.svg_path}
+                                filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform={`translate(${symbol.offsetX} ${symbol.offsetY})`} />
+                        </>
+                    )
+                }))}
             </svg>
         </span>
     )

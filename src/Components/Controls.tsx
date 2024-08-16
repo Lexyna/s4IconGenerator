@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { HexColorInput, HexColorPicker } from "react-colorful"
-import { Emblem, SVGIconProps, Symbol } from "./SVGIconSpace"
-import { FatS, path_originalS, path_S4S, path_s4SSharp, SleekS } from "./SVGSymbolPaths"
+import { Emblem, SVGIconProps } from "./SVGIconSpace"
+import { SleekS } from "./SVGSymbolPaths"
+import { symbolConfig, SymbolControlls } from "./SymbolControlls"
 
 export interface controllerProps {
     setSVGProps: (param: SVGIconProps) => void
@@ -22,9 +23,17 @@ export const Controlls = (props: controllerProps) => {
     const [emblemColor1, setEmblemColor1] = useState(props.svgProps.EmblemCol1);
     const [emblemColor2, setEmblemColor2] = useState(props.svgProps.EmblemCol2);
 
-    const [symbolColor1, setSymbolColor1] = useState(props.svgProps.SymbolCol1);
-    const [symbolColor2, setSymbolColor2] = useState(props.svgProps.SymbolCol2);
-
+    const [symbolConfigs, setSymbolConfigs] = useState<symbolConfig[]>([
+        {
+            id: "first",
+            color1: "ffffff",
+            color2: "#000000",
+            offsetX: 0,
+            offsetY: 0,
+            flip: false,
+            svg_path: SleekS
+        }
+    ]);
 
     const changeBGColor1 = (e: string) => {
         setBgColor1(e)
@@ -90,22 +99,6 @@ export const Controlls = (props: controllerProps) => {
         })
     }
 
-    const changeSymbolColor1 = (e: string) => {
-        setSymbolColor1(e)
-        props.setSVGProps({
-            ...props.svgProps,
-            SymbolCol1: e
-        })
-    }
-
-    const changeSymbolColor2 = (e: string) => {
-        setSymbolColor2(e)
-        props.setSVGProps({
-            ...props.svgProps,
-            SymbolCol2: e
-        })
-    }
-
     const changeEmblem = (e: React.FormEvent<HTMLSelectElement>) => {
 
         let emblem = props.svgProps.Emblem;
@@ -134,41 +127,17 @@ export const Controlls = (props: controllerProps) => {
         })
     }
 
-    const changeSymbol = (e: React.FormEvent<HTMLSelectElement>) => {
+    const setSymbolConfig = (sym: symbolConfig) => {
 
-        let symbol = props.svgProps.Symbol;
+        const newSymbolConfig = symbolConfigs.slice(0);
 
-        switch (e.currentTarget.value) {
-            case "S1": symbol = Symbol.S1; break;
-            case "SS": symbol = Symbol.SS; break;
-            case "SZ": symbol = Symbol.SZ; break;
-            case "S2Offset": symbol = Symbol.S2Offset; break;
-            case "S3": symbol = Symbol.S3; break;
-            case "S3A": symbol = Symbol.S3A; break;
-            case "S3R": symbol = Symbol.S3Roman; break;
-            case "S4": symbol = Symbol.S4; break;
-            case "S4A": symbol = Symbol.S4A; break;
-            case "NONE": symbol = Symbol.NONE; break;
-            default: break;
-        }
+        newSymbolConfig.forEach(s => {
+            if (s.id != sym.id) return
+            s.color1 = sym.color1;
+            s.color2 = sym.color2;
+        });
 
-        props.setSVGProps({ ...props.svgProps, Symbol: symbol })
-    }
-
-    const changeSType = (e: React.FormEvent<HTMLSelectElement>) => {
-
-        let sType = props.svgProps.SType;
-
-        switch (e.currentTarget.value) {
-            case "OriginalS": sType = path_originalS; break
-            case "StylishS": sType = path_S4S; break
-            case "StylishSSharp": sType = path_s4SSharp; break;
-            case "FatS": sType = FatS; break;
-            case "SleekS": sType = SleekS; break;
-            default: break;
-        }
-
-        props.setSVGProps({ ...props.svgProps, SType: sType })
+        props.setSVGProps({ ...props.svgProps, symbolConfig: newSymbolConfig });
     }
 
     const loadQuickConfig = async () => {
@@ -262,41 +231,11 @@ export const Controlls = (props: controllerProps) => {
                             <input type="checkbox" defaultChecked={props.svgProps.EmblemOverrideBg} onChange={setEmblemOverride}></input>
                         </div>
                     </div>
-                    <div style={{ display: "grid" }}>
-                        Symbol:
-                        <div style={{ display: "flex" }}>
-                            <div>
-                                <HexColorPicker color={symbolColor1} onChange={changeSymbolColor1}></HexColorPicker>
-                                <HexColorInput color={symbolColor1} onChange={changeSymbolColor1}></HexColorInput>
-
-                            </div>
-                            <div>
-                                <HexColorPicker color={symbolColor2} onChange={changeSymbolColor2}></HexColorPicker>
-                                <HexColorInput color={symbolColor2} onChange={changeSymbolColor2}></HexColorInput>
-                            </div>
-                        </div>
-                        <select onChange={e => changeSymbol(e)} defaultValue="S4">
-                            <option value="S1">S1</option>
-                            <option value="SZ">SZ</option>
-                            <option value="SS">S2</option>
-                            <option value="S2Offset">S2 Offset</option>
-                            <option value="S3">S3</option>
-                            <option value="S3A">S3 Alternative</option>
-                            <option value="S3R">S3 Roman</option>
-                            <option value="S4">S4</option>
-                            <option value="S4A">S4 Alternative</option>
-                            <option value="NONE">NONE</option>
-                        </select>
-                    </div>
-                    <div style={{ display: "grid" }}>
-                        S-Type
-                        <select onChange={e => changeSType(e)} defaultValue="StylishS">
-                            <option value="StylishS">Stylish S</option>
-                            <option value="StylishSSharp">Stylish S Sharp</option>
-                            <option value="OriginalS">Original S</option>
-                            <option value="FatS">Fat S</option>
-                            <option value="SleekS">Sleek S</option>
-                        </select>
+                    <div>
+                        Symbol Config:
+                        {symbolConfigs.map((sym: symbolConfig) => {
+                            return <SymbolControlls {...sym} setSymbol={setSymbolConfig}></SymbolControlls>
+                        })}
                     </div>
                 </div>
                 <div style={{ paddingLeft: "2rem", }}>
