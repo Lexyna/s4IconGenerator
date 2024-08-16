@@ -252,7 +252,7 @@ export const Controls = (props: controllerProps) => {
                         <button style={{ marginLeft: "0.5rem" }} onClick={addNewSymbol}>Add Symbol</button>
                     </div>
                     {symbolConfigs.map((sym: symbolConfig) => {
-                        return <SymbolControlls {...sym} setSymbol={setSymbolConfig} deleteSymbol={deleteSymbol}></SymbolControlls>
+                        return <SymbolControlls {...sym} setSymbol={setSymbolConfig} deleteSymbol={deleteSymbol} key={sym.id}></SymbolControlls>
                     })}
                 </div>
                 <div style={{ paddingLeft: "2rem", }}>

@@ -183,7 +183,7 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                 </> : <></>}
                 {props.symbolConfig.map((symbol => {
                     return (
-                        <>
+                        <g key={symbol.id}>
                             <defs>
                                 <linearGradient id={`Gradient${symbol.id}`} x1={0} x2={0} y1={0} y2={1}>
                                     <stop stopColor={symbol.color1} offset="0%"></stop>
@@ -193,10 +193,10 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                             <path strokeWidth="4" fill={`url(#Gradient${symbol.id})`}
                                 d={symbol.svg_path}
                                 filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform={`translate(${symbol.offsetX} ${symbol.offsetY})`} />
-                        </>
+                        </g>
                     )
                 }))}
             </svg>
-        </span>
+        </span >
     )
 }
