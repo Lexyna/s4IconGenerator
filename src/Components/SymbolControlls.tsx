@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HexColorInput } from "react-colorful";
 import { PopoverPicker } from "./PopoverPicker";
-import { FatS, leaning_One, normal4, path_originalS, path_S4S, path_s4SSharp, path_Z, SleekS, stylish3, stylish4 } from "./SVGSymbolPaths";
+import { FatS, leaning4, leaning_One, normal4, path_originalS, path_S4S, path_s4SSharp, path_Z, SleekS, stylish3, stylish4 } from "./SVGSymbolPaths";
 
 
 export interface symbolConfig {
@@ -37,6 +37,7 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
             case "leaningOne": path = leaning_One; break;
             case "stylish3": path = stylish3; break;
             case "normal4": path = normal4; break;
+            case "leaning4": path = leaning4; break;
             case "Stylish4": path = stylish4; break;
             case "Z": path = path_Z; break;
             default: break;
