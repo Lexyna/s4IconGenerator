@@ -10,10 +10,8 @@ export const MainView = () => {
         bgColor2: "#000000",
         cornerCol1: "#e0a41f",
         cornerCol2: "#8a6412",
-        corners: 0,
         stripesCol1: "#e0a41f",
         stripesCol2: "#8a6412",
-        stripes: 0,
         Emblem: Emblem.Star,
         EmblemCol1: "#e0a41f",
         EmblemCol2: "#8a6412",
@@ -29,7 +27,7 @@ export const MainView = () => {
             <div style={{ display: "flex" }}>
                 <div style={{ paddingTop: "1.5rem" }}>
                     <div style={{ display: "flex" }}>
-                        <SVGIconSpace {...svgProps} corners={1}></SVGIconSpace>
+                        <SVGIconSpace {...svgProps}></SVGIconSpace>
                         <SVGIconSpace {...svgProps} corners={2}></SVGIconSpace>
                         <SVGIconSpace {...svgProps} corners={3}></SVGIconSpace>
                         <SVGIconSpace {...svgProps} corners={4}></SVGIconSpace>
