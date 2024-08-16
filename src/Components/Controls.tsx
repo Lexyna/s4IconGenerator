@@ -234,7 +234,7 @@ export const Controls = (props: controllerProps) => {
                 <div style={{ paddingLeft: "2rem", }}>
                     <div style={{ display: "grid" }}>
                         QuickConfig
-                        <textarea style={{ height: "20rem", width: "20rem" }}
+                        <textarea style={{ height: "70vh", width: "20rem" }}
                             value={SVGPropsToString(props.svgProps)}
                             readOnly
                         ></textarea>

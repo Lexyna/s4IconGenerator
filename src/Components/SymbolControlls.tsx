@@ -57,26 +57,32 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
     }
 
     return (
-        <div>
+        <div className="symConf">
             <>
-                <div style={{ display: "inline-flex" }}>
-                    <div>
-                        <PopoverPicker color={color1} onChange={changeColor1}></PopoverPicker>
-                        <HexColorInput className="symbolControl" color={color1} onChange={changeColor1}></HexColorInput>
-                        <PopoverPicker color={color2} onChange={changeColor2}></PopoverPicker>
-                        <HexColorInput className="symbolControl" color={color2} onChange={changeColor2}></HexColorInput>
+                <div style={{ display: "block", paddingBottom: "1rem", alignItems: "flex-start" }}>
+                    <div >
+                        <div style={{ display: "flex" }}>
+                            <PopoverPicker color={color1} onChange={changeColor1}></PopoverPicker>
+                            <HexColorInput className="symbolControl" color={color1} onChange={changeColor1}></HexColorInput>
+                        </div>
+                        <div style={{ display: "flex" }}>
+                            <PopoverPicker color={color2} onChange={changeColor2}></PopoverPicker>
+                            <HexColorInput className="symbolControl" color={color2} onChange={changeColor2}></HexColorInput>
+                        </div>
                     </div>
-                    <div>
-                        <label>OffsetX</label>
-                        <input name="input" type="number" defaultValue={props.offsetX} min={-50} max={50}
+                    <div style={{ display: "flex" }}>
+                        <label style={{ marginTop: "0.5rem", marginLeft: "0.5rem" }}>OffsetX: </label>
+                        <input style={{ marginLeft: "0.5 rem" }}
+                            name="input" type="number" defaultValue={props.offsetX} min={-50} max={50}
                             onChange={e => props.setSymbol({ ...props, offsetX: Number(e.currentTarget.value) })}>
                         </input>
-                        <label>OffsetY</label>
-                        <input name="input" type="number" defaultValue={props.offsetY} min={-50} max={50}
+                        <label style={{ marginTop: "0.5rem" }}>OffsetY: </label>
+                        <input style={{ marginLeft: "0.5 rem" }}
+                            name="input" type="number" defaultValue={props.offsetY} min={-50} max={50}
                             onChange={e => props.setSymbol({ ...props, offsetY: Number(e.currentTarget.value) })}></input>
                     </div>
-                    <div>
-                        <label>Symbol: </label>
+                    <div style={{ display: " flex", paddingLeft: "0.5rem" }}>
+                        <label style={{ marginRight: "0.5rem" }}>Symbol: </label>
                         <select defaultValue="SleekS" onChange={e => changeSymbolType(e)}>
                             <option value="SleekS">SleekS</option>
                             <option value="FatS">FatS</option>
@@ -90,6 +96,8 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
                             <option value="Stylish4">stylish 4</option>
                             <option value="Z">Z</option>
                         </select>
+                        <button className="symbolBtn">Add</button>
+                        <button className="symbolBtn">Delete</button>
                     </div>
                 </div>
             </>
