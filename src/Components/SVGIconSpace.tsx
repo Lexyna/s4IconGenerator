@@ -14,9 +14,6 @@ export interface SVGIconProps {
     EmblemCol1: string,
     EmblemCol2: string,
     EmblemOverrideBg: boolean,
-    Symbol: Symbol,
-    SymbolCol1: string,
-    SymbolCol2: string,
     SType: string,
     symbolConfig: symbolConfig[]
 }

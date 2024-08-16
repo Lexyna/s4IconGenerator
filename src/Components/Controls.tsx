@@ -169,8 +169,7 @@ export const Controls = (props: controllerProps) => {
         setStripesColor1(conf.stripesCol2)
         setEmblemColor1(conf.stripesCol1)
         setEmblemColor2(conf.EmblemCol2)
-        setSymbolColor1(conf.SymbolCol1)
-        setSymbolColor2(conf.stripesCol2)
+        setSymbolConfigs(conf.symbolConfig);
         props.setSVGProps({ ...conf })
     }
 

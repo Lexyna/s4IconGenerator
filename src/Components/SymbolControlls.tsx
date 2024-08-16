@@ -23,8 +23,8 @@ export interface symbolConfigStateP extends symbolConfig {
 
 export const defaultSymbolConf: symbolConfig = {
     id: nanoid(),
-    color1: "#e0a41f",
-    color2: "#4d4d4d",
+    color1: "#6a6a6a",
+    color2: "#2a2a2a",
     offsetX: 0,
     offsetY: 0,
     flip: false,

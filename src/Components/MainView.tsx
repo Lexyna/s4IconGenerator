@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Controls } from "./Controls";
-import { Emblem, SVGIconProps, SVGIconSpace, Symbol } from "./SVGIconSpace";
+import { Emblem, SVGIconProps, SVGIconSpace } from "./SVGIconSpace";
 import { path_S4S } from "./SVGSymbolPaths";
 import { defaultSymbolConf } from "./SymbolControlls";
 
@@ -17,9 +17,6 @@ export const MainView = () => {
         EmblemCol1: "#e0a41f",
         EmblemCol2: "#8a6412",
         EmblemOverrideBg: true,
-        Symbol: Symbol.S4,
-        SymbolCol1: "#6a6a6a",
-        SymbolCol2: "#2a2a2a",
         SType: path_S4S,
         symbolConfig: [defaultSymbolConf]
     })
