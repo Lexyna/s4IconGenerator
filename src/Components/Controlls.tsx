@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { HexColorPicker } from "react-colorful"
 import { Emblem, SVGIconProps, Symbol } from "./SVGIconSpace"
-import { FatS, path_S4S, path_s4SSharp, SleekS } from "./SVGSymbolPaths"
+import { FatS, path_originalS, path_S4S, path_s4SSharp, SleekS } from "./SVGSymbolPaths"
 
 export interface controllerProps {
     setSVGProps: (param: SVGIconProps) => void
@@ -160,7 +160,8 @@ export const Controlls = (props: controllerProps) => {
         let sType = props.svgProps.SType;
 
         switch (e.currentTarget.value) {
-            case "StylishS": sType = path_S4S; break;
+            case "OriginalS": sType = path_originalS; break
+            case "StylishS": sType = path_S4S; break
             case "StylishSSharp": sType = path_s4SSharp; break;
             case "FatS": sType = FatS; break;
             case "SleekS": sType = SleekS; break;
@@ -288,9 +289,10 @@ export const Controlls = (props: controllerProps) => {
                     </div>
                     <div style={{ display: "grid" }}>
                         S-Type
-                        <select onChange={e => changeSType(e)} defaultValue="S4">
+                        <select onChange={e => changeSType(e)} defaultValue="OriginalS">
                             <option value="StylishS">Stylish S</option>
                             <option value="StylishSSharp">Stylish S Sharp</option>
+                            <option value="OriginalS">Original S</option>
                             <option value="FatS">Fat S</option>
                             <option value="SleekS">Sleek S</option>
                         </select>

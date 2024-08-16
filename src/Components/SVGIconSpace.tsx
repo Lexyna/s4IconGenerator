@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { leaning4, leaning_One, normal4, path_Z, stylish3 } from "./SVGSymbolPaths";
+import { leaning_One, normal4, path_originalS, path_Z, stylish3, stylish4 } from "./SVGSymbolPaths";
 
 export interface SVGIconProps {
     bgColor1: string,
@@ -259,11 +259,11 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                 {props.Symbol == Symbol.S4 ?
                     <>
                         <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={props.SType}
-                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(4 2)" />
-                        <path strokeWidth="4" fill="url(#SymbolGradient)"
-                            d={leaning4}
+                            d={stylish4}
                             filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(-4 -10)" />
+                        <path strokeWidth="4" fill="url(#SymbolGradient)"
+                            d={path_originalS}
+                            filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(4 2)" />
                     </> :
                     <></>}
                 {props.Symbol == Symbol.S4A ?
