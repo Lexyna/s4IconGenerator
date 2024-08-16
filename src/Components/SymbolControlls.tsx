@@ -35,7 +35,7 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
 
     const [color1, setColor1] = useState(props.color1);
     const [color2, setColor2] = useState(props.color2);
-    const [symbolType, setSymbolType] = useState<string>(loadSymbolFromPath(props.svg_path));
+    const [symbolType] = useState<string>(loadSymbolFromPath(props.svg_path));
 
     const changeSymbolType = (e: React.FormEvent<HTMLSelectElement>) => {
 
