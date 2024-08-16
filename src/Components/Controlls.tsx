@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { HexColorPicker } from "react-colorful"
+import { HexColorInput, HexColorPicker } from "react-colorful"
 import { Emblem, SVGIconProps, Symbol } from "./SVGIconSpace"
 import { FatS, path_originalS, path_S4S, path_s4SSharp, SleekS } from "./SVGSymbolPaths"
 
@@ -199,11 +199,11 @@ export const Controlls = (props: controllerProps) => {
                         <div style={{ display: "flex" }}>
                             <div>
                                 <HexColorPicker color={bgColor1} onChange={changeBGColor1}></HexColorPicker>
-                                <input type="text" value={bgColor1} onChange={e => changeBGColor1(e.currentTarget.value)}></input>
+                                <HexColorInput color={bgColor1} onChange={changeBGColor1}></HexColorInput>
                             </div>
                             <div>
                                 <HexColorPicker color={bgColor2} onChange={changeBGColor2}></HexColorPicker>
-                                <input type="text" value={bgColor2} onChange={e => changeBGColor2(e.currentTarget.value)}></input>
+                                <HexColorInput color={bgColor2} onChange={changeBGColor2}></HexColorInput>
                             </div>
                         </div>
                     </div>
@@ -212,11 +212,11 @@ export const Controlls = (props: controllerProps) => {
                         <div style={{ display: "flex" }}>
                             <div>
                                 <HexColorPicker color={cornerColor1} onChange={changeCornerColor1}></HexColorPicker>
-                                <input type="text" value={cornerColor1} onChange={e => changeCornerColor1(e.currentTarget.value)}></input>
+                                <HexColorInput color={cornerColor1} onChange={changeCornerColor1}></HexColorInput>
                             </div>
                             <div>
                                 <HexColorPicker color={cornerColor2} onChange={changeCornerColor2}></HexColorPicker>
-                                <input type="text" value={cornerColor2} onChange={e => changeCornerColor2(e.currentTarget.value)}></input>
+                                <HexColorInput color={cornerColor2} onChange={changeCornerColor2}></HexColorInput>
                             </div>
                         </div>
                     </div>
@@ -225,11 +225,11 @@ export const Controlls = (props: controllerProps) => {
                         <div style={{ display: "flex" }}>
                             <div>
                                 <HexColorPicker color={stripesColor1} onChange={changeStripesColor1}></HexColorPicker>
-                                <input type="text" value={stripesColor1} onChange={e => changeStripesColor1(e.currentTarget.value)}></input>
+                                <HexColorInput color={stripesColor1} onChange={changeStripesColor1}></HexColorInput>
                             </div>
                             <div>
                                 <HexColorPicker color={stripesColor2} onChange={changeStripesColor2}></HexColorPicker>
-                                <input type="text" value={stripesColor2} onChange={e => changeStripesColor2(e.currentTarget.value)}></input>
+                                <HexColorInput color={stripesColor2} onChange={changeStripesColor2}></HexColorInput>
                             </div>
                         </div>
                     </div>
@@ -240,11 +240,11 @@ export const Controlls = (props: controllerProps) => {
                         <div style={{ display: "flex" }}>
                             <div>
                                 <HexColorPicker color={emblemColor1} onChange={changeEmblemColor1}></HexColorPicker>
-                                <input type="text" value={emblemColor1} onChange={e => changeEmblemColor1(e.currentTarget.value)}></input>
+                                <HexColorInput color={emblemColor1} onChange={changeEmblemColor1}></HexColorInput>
                             </div>
                             <div>
                                 <HexColorPicker color={emblemColor2} onChange={changeEmblemColor2}></HexColorPicker>
-                                <input type="text" value={emblemColor2} onChange={e => changeEmblemColor2(e.currentTarget.value)}></input>
+                                <HexColorInput color={emblemColor2} onChange={changeEmblemColor2}></HexColorInput>
                             </div>
                         </div>
                         <select onChange={e => changeEmblem(e)} defaultValue="Star">
@@ -267,11 +267,12 @@ export const Controlls = (props: controllerProps) => {
                         <div style={{ display: "flex" }}>
                             <div>
                                 <HexColorPicker color={symbolColor1} onChange={changeSymbolColor1}></HexColorPicker>
-                                <input type="text" value={symbolColor1} onChange={e => changeSymbolColor1(e.currentTarget.value)}></input>
+                                <HexColorInput color={symbolColor1} onChange={changeSymbolColor1}></HexColorInput>
+
                             </div>
                             <div>
                                 <HexColorPicker color={symbolColor2} onChange={changeSymbolColor2}></HexColorPicker>
-                                <input type="text" value={symbolColor2} onChange={e => changeSymbolColor2(e.currentTarget.value)}></input>
+                                <HexColorInput color={symbolColor2} onChange={changeSymbolColor2}></HexColorInput>
                             </div>
                         </div>
                         <select onChange={e => changeSymbol(e)} defaultValue="S4">
