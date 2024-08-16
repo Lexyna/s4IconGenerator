@@ -70,7 +70,19 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                         <stop stopColor={props.bgColor1} offset="0%"></stop>
                         <stop stopColor={props.bgColor2} offset="100%"></stop>
                     </linearGradient>
-                    <linearGradient id="cornerGradient" x1={0} x2={1} y1={0} y2={1}>
+                    <linearGradient id="cornerGradient1" x1={1} x2={0} y1={0} y2={1}>
+                        <stop stopColor={props.cornerCol1} offset="0%"></stop>
+                        <stop stopColor={props.cornerCol2} offset="100%"></stop>
+                    </linearGradient>
+                    <linearGradient id="cornerGradient2" x1={0} x2={1} y1={0} y2={1}>
+                        <stop stopColor={props.cornerCol1} offset="0%"></stop>
+                        <stop stopColor={props.cornerCol2} offset="100%"></stop>
+                    </linearGradient>
+                    <linearGradient id="cornerGradient3" x1={0} x2={1} y1={1} y2={0}>
+                        <stop stopColor={props.cornerCol1} offset="0%"></stop>
+                        <stop stopColor={props.cornerCol2} offset="100%"></stop>
+                    </linearGradient>
+                    <linearGradient id="cornerGradient4" x1={1} x2={0} y1={1} y2={0}>
                         <stop stopColor={props.cornerCol1} offset="0%"></stop>
                         <stop stopColor={props.cornerCol2} offset="100%"></stop>
                     </linearGradient>
@@ -84,10 +96,10 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                     </linearGradient>
                 </defs>
                 <rect x={0} y={0} width="100%" height="100%" fill="url(#bgGradient)"></rect>
-                {props.corners && props.corners >= 1 ? <polygon points="0 75, 0 100, 25 100, 0" fill="url(#cornerGradient)" filter="drop-shadow(3px -2px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
-                {props.corners && props.corners >= 2 ? <polygon points="100 75, 100 100, 75 100, 0" fill="url(#cornerGradient)" filter="drop-shadow(-2px -2px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
-                {props.corners && props.corners >= 3 ? <polygon points="100 25, 100 0, 75 0, 0" fill="url(#cornerGradient)" filter="drop-shadow(2px 4px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
-                {props.corners && props.corners >= 4 ? <polygon points="0 25, 0 0, 25 0, 0" fill="url(#cornerGradient)" filter="drop-shadow(1px 3px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
+                {props.corners && props.corners >= 1 ? <polygon points="0 75, 0 100, 25 100, 0" fill="url(#cornerGradient1)" filter="drop-shadow(3px -2px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
+                {props.corners && props.corners >= 2 ? <polygon points="100 75, 100 100, 75 100, 0" fill="url(#cornerGradient2)" filter="drop-shadow(-2px -2px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
+                {props.corners && props.corners >= 3 ? <polygon points="100 25, 100 0, 75 0, 0" fill="url(#cornerGradient3)" filter="drop-shadow(2px 4px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
+                {props.corners && props.corners >= 4 ? <polygon points="0 25, 0 0, 25 0, 0" fill="url(#cornerGradient4)" filter="drop-shadow(1px 3px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
                 {props.stripes == 1 ?
                     <>
                         <line x1={0} x2={100} y1={50} y2={50} stroke="url(#stripesGradient)" strokeWidth={7} filter="drop-shadow(0px 5px 1px rgb(0 0 0 / 0.4))"></line>
