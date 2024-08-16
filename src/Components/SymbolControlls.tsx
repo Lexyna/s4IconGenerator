@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import React, { useState } from "react";
 import { HexColorInput } from "react-colorful";
 import { PopoverPicker } from "./PopoverPicker";
@@ -17,6 +18,16 @@ export interface symbolConfig {
 export interface symbolConfigStateP extends symbolConfig {
     id: string,
     setSymbol: (sym: symbolConfig) => void
+}
+
+export const defaultSymbolConf: symbolConfig = {
+    id: nanoid(),
+    color1: "#e0a41f",
+    color2: "#4d4d4d",
+    offsetX: 0,
+    offsetY: 0,
+    flip: false,
+    svg_path: SleekS
 }
 
 export const SymbolControlls = (props: symbolConfigStateP) => {
@@ -64,22 +75,20 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
                         <div style={{ display: "flex" }}>
                             <PopoverPicker color={color1} onChange={changeColor1}></PopoverPicker>
                             <HexColorInput className="symbolControl" color={color1} onChange={changeColor1}></HexColorInput>
+                            <label style={{ marginTop: "0.5rem", marginLeft: "0.5rem" }}>OffsetX: </label>
+                            <input style={{ marginLeft: "0.5rem" }}
+                                name="input" type="number" defaultValue={props.offsetX} min={-50} max={50}
+                                onChange={e => props.setSymbol({ ...props, offsetX: Number(e.currentTarget.value) })}>
+                            </input>
                         </div>
                         <div style={{ display: "flex" }}>
                             <PopoverPicker color={color2} onChange={changeColor2}></PopoverPicker>
                             <HexColorInput className="symbolControl" color={color2} onChange={changeColor2}></HexColorInput>
+                            <label style={{ marginTop: "0.5rem", marginLeft: "0.5rem" }}>OffsetY: </label>
+                            <input style={{ marginLeft: "0.5rem" }}
+                                name="input" type="number" defaultValue={props.offsetY} min={-50} max={50}
+                                onChange={e => props.setSymbol({ ...props, offsetY: Number(e.currentTarget.value) })}></input>
                         </div>
-                    </div>
-                    <div style={{ display: "flex" }}>
-                        <label style={{ marginTop: "0.5rem", marginLeft: "0.5rem" }}>OffsetX: </label>
-                        <input style={{ marginLeft: "0.5 rem" }}
-                            name="input" type="number" defaultValue={props.offsetX} min={-50} max={50}
-                            onChange={e => props.setSymbol({ ...props, offsetX: Number(e.currentTarget.value) })}>
-                        </input>
-                        <label style={{ marginTop: "0.5rem" }}>OffsetY: </label>
-                        <input style={{ marginLeft: "0.5 rem" }}
-                            name="input" type="number" defaultValue={props.offsetY} min={-50} max={50}
-                            onChange={e => props.setSymbol({ ...props, offsetY: Number(e.currentTarget.value) })}></input>
                     </div>
                     <div style={{ display: " flex", paddingLeft: "0.5rem" }}>
                         <label style={{ marginRight: "0.5rem" }}>Symbol: </label>

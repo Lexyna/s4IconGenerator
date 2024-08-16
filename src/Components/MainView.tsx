@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Controls } from "./Controls";
 import { Emblem, SVGIconProps, SVGIconSpace, Symbol } from "./SVGIconSpace";
-import { path_S4S, SleekS } from "./SVGSymbolPaths";
+import { path_S4S } from "./SVGSymbolPaths";
+import { defaultSymbolConf } from "./SymbolControlls";
 
 export const MainView = () => {
 
@@ -20,15 +21,7 @@ export const MainView = () => {
         SymbolCol1: "#6a6a6a",
         SymbolCol2: "#2a2a2a",
         SType: path_S4S,
-        symbolConfig: [{
-            id: "first",
-            color1: "#e0a41f",
-            color2: "#4d4d4d",
-            offsetX: 0,
-            offsetY: 0,
-            flip: false,
-            svg_path: SleekS
-        }]
+        symbolConfig: [defaultSymbolConf]
     })
 
     return (

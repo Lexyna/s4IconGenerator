@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import { HexColorInput, HexColorPicker } from "react-colorful"
+import { HexColorInput } from "react-colorful"
+import { PopoverPicker } from "./PopoverPicker"
 import { Emblem, SVGIconProps } from "./SVGIconSpace"
 import { symbolConfig, SymbolControlls } from "./SymbolControlls"
 
@@ -160,11 +161,11 @@ export const Controls = (props: controllerProps) => {
                         <div style={{ paddingRight: "20px" }}>Background:</div>
                         <div style={{ display: "flex" }}>
                             <div>
-                                <HexColorPicker color={bgColor1} onChange={changeBGColor1}></HexColorPicker>
+                                <PopoverPicker color={bgColor1} onChange={changeBGColor1}></PopoverPicker>
                                 <HexColorInput color={bgColor1} onChange={changeBGColor1}></HexColorInput>
                             </div>
                             <div>
-                                <HexColorPicker color={bgColor2} onChange={changeBGColor2}></HexColorPicker>
+                                <PopoverPicker color={bgColor2} onChange={changeBGColor2}></PopoverPicker>
                                 <HexColorInput color={bgColor2} onChange={changeBGColor2}></HexColorInput>
                             </div>
                         </div>
@@ -173,11 +174,11 @@ export const Controls = (props: controllerProps) => {
                         <div style={{ paddingRight: "20px" }}>Corner:</div>
                         <div style={{ display: "flex" }}>
                             <div>
-                                <HexColorPicker color={cornerColor1} onChange={changeCornerColor1}></HexColorPicker>
+                                <PopoverPicker color={cornerColor1} onChange={changeCornerColor1}></PopoverPicker>
                                 <HexColorInput color={cornerColor1} onChange={changeCornerColor1}></HexColorInput>
                             </div>
                             <div>
-                                <HexColorPicker color={cornerColor2} onChange={changeCornerColor2}></HexColorPicker>
+                                <PopoverPicker color={cornerColor2} onChange={changeCornerColor2}></PopoverPicker>
                                 <HexColorInput color={cornerColor2} onChange={changeCornerColor2}></HexColorInput>
                             </div>
                         </div>
@@ -186,30 +187,29 @@ export const Controls = (props: controllerProps) => {
                         Stripes:
                         <div style={{ display: "flex" }}>
                             <div>
-                                <HexColorPicker color={stripesColor1} onChange={changeStripesColor1}></HexColorPicker>
+                                <PopoverPicker color={stripesColor1} onChange={changeStripesColor1}></PopoverPicker>
                                 <HexColorInput color={stripesColor1} onChange={changeStripesColor1}></HexColorInput>
                             </div>
                             <div>
-                                <HexColorPicker color={stripesColor2} onChange={changeStripesColor2}></HexColorPicker>
+                                <PopoverPicker color={stripesColor2} onChange={changeStripesColor2}></PopoverPicker>
                                 <HexColorInput color={stripesColor2} onChange={changeStripesColor2}></HexColorInput>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div>
                     <div style={{ display: "grid" }}>
                         Emblem:
                         <div style={{ display: "flex" }}>
                             <div>
-                                <HexColorPicker color={emblemColor1} onChange={changeEmblemColor1}></HexColorPicker>
+                                <PopoverPicker color={emblemColor1} onChange={changeEmblemColor1}></PopoverPicker>
                                 <HexColorInput color={emblemColor1} onChange={changeEmblemColor1}></HexColorInput>
                             </div>
                             <div>
-                                <HexColorPicker color={emblemColor2} onChange={changeEmblemColor2}></HexColorPicker>
+                                <PopoverPicker color={emblemColor2} onChange={changeEmblemColor2}></PopoverPicker>
                                 <HexColorInput color={emblemColor2} onChange={changeEmblemColor2}></HexColorInput>
                             </div>
                         </div>
-                        <select onChange={e => changeEmblem(e)} defaultValue="Star">
+                        <select style={{ width: "80%", marginLeft: "0.5rem", marginTop: "0.5rem" }}
+                            onChange={e => changeEmblem(e)} defaultValue="Star">
                             <option value="Circle">Circle</option>
                             <option value="Inv_Tri">Inverted Triangle</option>
                             <option value="Diamond">Diamond</option>
@@ -219,17 +219,17 @@ export const Controls = (props: controllerProps) => {
                             <option value="DoubleTriangle">DoubleTriangle</option>
                             <option value="NONE">None</option>
                         </select>
-                        <div style={{ display: " flex" }}>
+                        <div style={{ display: " flex", marginLeft: "0.5rem" }}>
                             <label>Override Background</label>
                             <input type="checkbox" defaultChecked={props.svgProps.EmblemOverrideBg} onChange={setEmblemOverride}></input>
                         </div>
                     </div>
-                    <div>
-                        Symbol Config:
-                        {symbolConfigs.map((sym: symbolConfig) => {
-                            return <SymbolControlls {...sym} setSymbol={setSymbolConfig}></SymbolControlls>
-                        })}
-                    </div>
+                </div>
+                <div>
+                    Symbol Config:
+                    {symbolConfigs.map((sym: symbolConfig) => {
+                        return <SymbolControlls {...sym} setSymbol={setSymbolConfig}></SymbolControlls>
+                    })}
                 </div>
                 <div style={{ paddingLeft: "2rem", }}>
                     <div style={{ display: "grid" }}>
