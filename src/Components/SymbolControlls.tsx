@@ -22,7 +22,7 @@ export interface symbolConfigStateP extends symbolConfig {
 export const SymbolControlls = (props: symbolConfigStateP) => {
 
     const [color1, setColor1] = useState(props.color1);
-    const [color2, setColor2] = useState(props.color1);
+    const [color2, setColor2] = useState(props.color2);
 
     const changeSymbolType = (e: React.FormEvent<HTMLSelectElement>) => {
 
@@ -61,9 +61,9 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
                 <div style={{ display: "inline-flex" }}>
                     <div>
                         <PopoverPicker color={color1} onChange={changeColor1}></PopoverPicker>
-                        <HexColorInput className="symbolControll" color={color1} onChange={changeColor1}></HexColorInput>
+                        <HexColorInput className="symbolControl" color={color1} onChange={changeColor1}></HexColorInput>
                         <PopoverPicker color={color2} onChange={changeColor2}></PopoverPicker>
-                        <HexColorInput className="symbolControll" color={color2} onChange={changeColor2}></HexColorInput>
+                        <HexColorInput className="symbolControl" color={color2} onChange={changeColor2}></HexColorInput>
                     </div>
                     <div>
                         <label>OffsetX</label>

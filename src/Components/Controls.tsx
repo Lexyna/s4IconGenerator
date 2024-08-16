@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { HexColorInput, HexColorPicker } from "react-colorful"
 import { Emblem, SVGIconProps } from "./SVGIconSpace"
-import { SleekS } from "./SVGSymbolPaths"
 import { symbolConfig, SymbolControlls } from "./SymbolControlls"
 
 export interface controllerProps {
@@ -9,7 +8,7 @@ export interface controllerProps {
     svgProps: SVGIconProps
 }
 
-export const Controlls = (props: controllerProps) => {
+export const Controls = (props: controllerProps) => {
 
     const [bgColor1, setBgColor1] = useState(props.svgProps.bgColor1);
     const [bgColor2, setBgColor2] = useState(props.svgProps.bgColor2);
@@ -23,17 +22,7 @@ export const Controlls = (props: controllerProps) => {
     const [emblemColor1, setEmblemColor1] = useState(props.svgProps.EmblemCol1);
     const [emblemColor2, setEmblemColor2] = useState(props.svgProps.EmblemCol2);
 
-    const [symbolConfigs, setSymbolConfigs] = useState<symbolConfig[]>([
-        {
-            id: "first",
-            color1: "ffffff",
-            color2: "#000000",
-            offsetX: 0,
-            offsetY: 0,
-            flip: false,
-            svg_path: SleekS
-        }
-    ]);
+    const [symbolConfigs, setSymbolConfigs] = useState<symbolConfig[]>(props.svgProps.symbolConfig);
 
     const changeBGColor1 = (e: string) => {
         setBgColor1(e)
@@ -135,6 +124,10 @@ export const Controlls = (props: controllerProps) => {
             if (s.id != sym.id) return
             s.color1 = sym.color1;
             s.color2 = sym.color2;
+            s.offsetX = sym.offsetX;
+            s.offsetY = sym.offsetY;
+            s.flip = sym.flip;
+            s.svg_path = sym.svg_path;
         });
 
         props.setSVGProps({ ...props.svgProps, symbolConfig: newSymbolConfig });

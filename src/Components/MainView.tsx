@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Controlls } from "./Controls";
+import { Controls } from "./Controls";
 import { Emblem, SVGIconProps, SVGIconSpace, Symbol } from "./SVGIconSpace";
-import { path_S4S } from "./SVGSymbolPaths";
+import { path_S4S, SleekS } from "./SVGSymbolPaths";
 
 export const MainView = () => {
 
@@ -20,7 +20,15 @@ export const MainView = () => {
         SymbolCol1: "#6a6a6a",
         SymbolCol2: "#2a2a2a",
         SType: path_S4S,
-        symbolConfig: []
+        symbolConfig: [{
+            id: "first",
+            color1: "#e0a41f",
+            color2: "#4d4d4d",
+            offsetX: 0,
+            offsetY: 0,
+            flip: false,
+            svg_path: SleekS
+        }]
     })
 
     return (
@@ -59,7 +67,7 @@ export const MainView = () => {
                     </div>
                 </div>
                 <div style={{ paddingLeft: "1rem" }}>
-                    <Controlls setSVGProps={setSvgProps} svgProps={svgProps} ></Controlls>
+                    <Controls setSVGProps={setSvgProps} svgProps={svgProps} ></Controls>
                 </div>
             </div >
         </>
