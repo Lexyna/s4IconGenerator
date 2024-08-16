@@ -122,9 +122,6 @@ export const Controls = (props: controllerProps) => {
 
         const newSymbolConfig = symbolConfigs.slice(0);
 
-        console.log("before")
-        console.log(symbolConfigs)
-
         newSymbolConfig.forEach(s => {
             if (s.id != sym.id) return
             s.color1 = sym.color1;
@@ -135,9 +132,6 @@ export const Controls = (props: controllerProps) => {
             s.svg_path = sym.svg_path;
         });
 
-        console.log("change")
-        console.log(newSymbolConfig)
-
         props.setSVGProps({ ...props.svgProps, symbolConfig: newSymbolConfig });
     }
 
@@ -146,7 +140,16 @@ export const Controls = (props: controllerProps) => {
         const newSymbolConf = props.svgProps.symbolConfig.slice(0);
         newSymbolConf.push({ ...defaultSymbolConf, id: nanoid() });
 
-        console.log(newSymbolConf)
+        setSymbolConfigs(newSymbolConf);
+        props.setSVGProps({ ...props.svgProps, symbolConfig: newSymbolConf });
+    }
+
+    const deleteSymbol = (sym: symbolConfig) => {
+
+        const newSymbolConf = props.svgProps.symbolConfig.slice(0);
+        for (let i = newSymbolConf.length - 1; i >= 0; i--)
+            if (newSymbolConf[i].id == sym.id)
+                newSymbolConf.splice(i, 1);
 
         setSymbolConfigs(newSymbolConf);
         props.setSVGProps({ ...props.svgProps, symbolConfig: newSymbolConf });
@@ -249,7 +252,7 @@ export const Controls = (props: controllerProps) => {
                         <button style={{ marginLeft: "0.5rem" }} onClick={addNewSymbol}>Add Symbol</button>
                     </div>
                     {symbolConfigs.map((sym: symbolConfig) => {
-                        return <SymbolControlls {...sym} setSymbol={setSymbolConfig}></SymbolControlls>
+                        return <SymbolControlls {...sym} setSymbol={setSymbolConfig} deleteSymbol={deleteSymbol}></SymbolControlls>
                     })}
                 </div>
                 <div style={{ paddingLeft: "2rem", }}>

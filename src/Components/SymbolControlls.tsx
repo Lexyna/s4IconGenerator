@@ -17,7 +17,8 @@ export interface symbolConfig {
 
 export interface symbolConfigStateP extends symbolConfig {
     id: string,
-    setSymbol: (sym: symbolConfig) => void
+    setSymbol: (sym: symbolConfig) => void,
+    deleteSymbol: (sym: symbolConfig) => void
 }
 
 export const defaultSymbolConf: symbolConfig = {
@@ -105,7 +106,7 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
                             <option value="Stylish4">stylish 4</option>
                             <option value="Z">Z</option>
                         </select>
-                        <button className="symbolBtn">Delete</button>
+                        <button className="symbolBtn" onClick={() => props.deleteSymbol({ ...props })}>Delete</button>
                     </div>
                 </div>
             </>
