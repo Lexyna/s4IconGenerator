@@ -103,6 +103,8 @@ export const Controls = (props: controllerProps) => {
             case "DiamondStar": emblem = Emblem.DiamondStar; break;
             case "TriCircle": emblem = Emblem.TriCircle; break;
             case "DoubleTriangle": emblem = Emblem.DoubleTriangle; break;
+            case "Emblem": emblem = Emblem.Emblem; break;
+            case "EmblemCrown": emblem = Emblem.EmblemCrown; break;
             case "NONE": emblem = Emblem.NONE; break;
             default: break;
         }
@@ -237,6 +239,8 @@ export const Controls = (props: controllerProps) => {
                             <option value="Star">Star</option>
                             <option value="TriCircle">TriCircle</option>
                             <option value="DoubleTriangle">DoubleTriangle</option>
+                            <option value="Emblem">Emblem</option>
+                            <option value="EmblemCrown">EmblemCrown</option>
                             <option value="NONE">None</option>
                         </select>
                         <div style={{ display: " flex", marginLeft: "0.5rem" }}>

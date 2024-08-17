@@ -33,8 +33,16 @@ export const symbolSVGs: SymbolPath[] = [
         svg: "m 61 26 L 88 26 L 83 34 L 67 57 L 82 57 L 92 67 L 49 66 L 73 34 L 54 34 L 61 26"
     },
     {
+        name: "Z1",
+        svg: "m 83 11 L 80 20 L 73 40 L 64 48 L 72 22 L 65 26 L 59 25 L 83 11"
+    },
+    {
         name: "Z2",
         svg: "m 64 26 L 76 26 Q 92 27 83 34 Q 70 43 64 57 L 82 57 L 92 67 L 49 66 Q 53 47 76 32 L 56 32 L 64 26"
+    },
+    {
+        name: "Z3",
+        svg: "m 64 37 L 75 37 Q 82 37 80 43 L 75 57 L 84 69 Q 88 74 79 74 L 47 74 L 56 67 L 71 67 L 65 57 L 70 45 L 59 45 L 64 37"
     },
     {
         name: "normal 1",
@@ -54,6 +62,6 @@ export const symbolSVGs: SymbolPath[] = [
     },
     {
         name: "OriginalS",
-        svg: "m 57 27 Q 27 21 9 33 Q 4 37 11 40 Q 31 49 32 63 Q 32 71 20 80 Q 53 59 28 38 L 20 32 Q 31 26 50 32 L 57 27"
+        svg: "m 57 27 Q 27 21 9 33 Q 4 37 11 40 Q 31 49 32 63 Q 32 71 20 80 Q 53 59 28 38 L 20 32 Q 31 26 49 33 L 57 27"
     }
 ]

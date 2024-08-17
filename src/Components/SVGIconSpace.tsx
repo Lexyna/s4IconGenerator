@@ -27,6 +27,8 @@ export enum Emblem {
     DiamondStar,
     TriCircle,
     DoubleTriangle,
+    Emblem,
+    EmblemCrown,
     NONE
 }
 
@@ -124,36 +126,36 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                     : <></>}
                 {props.Emblem == Emblem.CIRCLE ? <>
                     {props.EmblemOverrideBg ? <circle cx={50} cy={50} r={33} fill="url(#bgGradient)"></circle> : <></>}
-                    <circle cx={50} cy={50} r={33} fill="none" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></circle>
+                    <circle cx={50} cy={50} r={33} fill="none" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></circle>
                 </> : <></>}
                 {props.Emblem == Emblem.INVERTED_TRIANGLE ? <>
                     {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 20 80, 80 80, 0" ></polygon> : <></>}
-                    <polygon fill="none" points="50 20, 20 80, 80 80, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                    <polygon fill="none" points="50 20, 20 80, 80 80, 0" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                 </> : <></>}
                 {props.Emblem == Emblem.Diamond ?
                     <>
                         {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 20 50, 50 80, 80 50, 0"></polygon> : <></>}
-                        <polygon fill="none" points="50 20, 20 50, 50 80, 80 50, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                        <polygon fill="none" points="50 20, 20 50, 50 80, 80 50, 0" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                     </> :
                     <></>}
                 {props.Emblem == Emblem.Double_Diamond ?
                     <>
-                        <polygon fill="none" points="30 70, 30 30, 70 30, 70 70" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                        <polygon fill="none" points="30 70, 30 30, 70 30, 70 70" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                         {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 20 50, 50 80, 80 50, 0"></polygon> : <></>}
-                        <polygon fill="none" points="50 20, 20 50, 50 80, 80 50, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                        <polygon fill="none" points="50 20, 20 50, 50 80, 80 50, 0" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                     </> :
                     <></>}
                 {props.Emblem == Emblem.Star ?
                     <>
                         {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 40 40, 20 30, 30 60, 25 80, 50 65, 75 80, 70 60, 80 30, 60 40"></polygon> : <></>}
-                        <polygon fill="none" points="50 20, 40 40, 20 30, 30 60, 25 80, 50 65, 75 80, 70 60, 80 30, 60 40" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                        <polygon fill="none" points="50 20, 40 40, 20 30, 30 60, 25 80, 50 65, 75 80, 70 60, 80 30, 60 40" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                     </> :
                     <></>}
                 {props.Emblem == Emblem.DiamondStar ?
                     <>
                         {props.EmblemOverrideBg ? <polygon fill="url(#bgGradient)" points="50 20, 40 40, 20 30, 30 60, 25 80, 50 65, 75 80, 70 60, 80 30, 60 40"></polygon> : <></>}
-                        <polygon fill="none" points="50 20, 20 50, 50 80, 80 50, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
-                        <polygon fill="none" points="50 20, 40 40, 20 30, 30 60, 25 80, 50 65, 75 80, 70 60, 80 30, 60 40" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                        <polygon fill="none" points="50 20, 20 50, 50 80, 80 50, 0" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                        <polygon fill="none" points="50 20, 40 40, 20 30, 30 60, 25 80, 50 65, 75 80, 70 60, 80 30, 60 40" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
                     </> :
                     <></>}
                 {props.Emblem == Emblem.TriCircle ?
@@ -164,9 +166,9 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                                 <circle cx={65} cy={35} r={20} fill="url(#bgGradient)" ></circle>
                                 <circle cx={50} cy={65} r={20} fill="url(#bgGradient)"></circle>
                             </> : <></>}
-                        <circle cx={35} cy={35} r={20} fill="none" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></circle>
-                        <circle cx={65} cy={35} r={20} fill="none" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></circle>
-                        <circle cx={50} cy={65} r={20} fill="none" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></circle>
+                        <circle cx={35} cy={35} r={20} fill="none" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></circle>
+                        <circle cx={65} cy={35} r={20} fill="none" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></circle>
+                        <circle cx={50} cy={65} r={20} fill="none" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></circle>
                     </> :
                     <></>}
                 {props.Emblem == Emblem.DoubleTriangle ? <>
@@ -175,8 +177,24 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                             <polygon fill="url(#bgGradient)" points="50 20, 20 75, 80 75, 0" ></polygon>
                             <polygon fill="url(#bgGradient)" points="20 25, 50 80, 80 25, 0" ></polygon>
                         </> : <></>}
-                    <polygon fill="none" points="50 20, 20 75, 80 75, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
-                    <polygon fill="none" points="20 25, 50 80, 80 25, 0" stroke="url(#EmblemGradient)" strokeWidth={5} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                    <polygon fill="none" points="50 20, 20 75, 80 75, 0" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                    <polygon fill="none" points="20 25, 50 80, 80 25, 0" stroke="url(#EmblemGradient)" strokeWidth={3} filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"></polygon>
+                </> : <></>}
+                {props.Emblem == Emblem.Emblem ? <>
+                    {props.EmblemOverrideBg ?
+                        <>
+                            <path d="m 20 20 Q 50 -5 80 20 Q 85 45 50 69 Q 15 45 20 20" strokeWidth="4" fill="url(#bgGradient)" filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(0 8)"></path>
+                        </> : <></>}
+                    <path d="m 20 20 Q 50 -5 80 20 Q 85 45 50 69 Q 15 45 20 20" strokeWidth="2" fill="none" stroke="url(#EmblemGradient)" filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"
+                        transform="translate(0 8)"></path>
+                </> : <></>}
+                {props.Emblem == Emblem.EmblemCrown ? <>
+                    {props.EmblemOverrideBg ?
+                        <>
+                            <path d="m 20 20 Q 50 -5 80 20 Q 85 45 50 69 Q 15 45 20 20 L 28 3 L 43 8 L 50 -1 L 56 8 L 72 3 L 80 20" strokeWidth="2" fill="url(#bgGradient)" filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))" transform="translate(0 8)"></path>
+                        </> : <></>}
+                    <path d="m 20 20 Q 50 -5 80 20 Q 85 45 50 69 Q 15 45 20 20 L 28 3 L 43 8 L 50 -1 L 56 8 L 72 3 L 80 20" strokeWidth="2" fill="none" stroke="url(#EmblemGradient)" filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"
+                        transform="translate(0 8)"></path>
                 </> : <></>}
                 {props.symbolConfig.map((symbol => {
                     return (
