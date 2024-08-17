@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import React, { useState } from "react";
 import { HexColorInput } from "react-colorful";
 import { PopoverPicker } from "./PopoverPicker";
-import { FatS, leaning4, leaning_One, normal4, path_originalS, path_S4S, path_s4SSharp, path_Z, SleekS, stylish3, stylish4 } from "./SVGSymbolPaths";
+import { symbolSVGs } from "./SVGSymbolPaths";
 
 
 export interface symbolConfig {
@@ -28,7 +28,7 @@ export const defaultSymbolConf: symbolConfig = {
     offsetX: 0,
     offsetY: 0,
     flip: false,
-    svg_path: SleekS
+    svg_path: symbolSVGs[0].svg
 }
 
 export const SymbolControlls = (props: symbolConfigStateP) => {
@@ -41,20 +41,10 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
 
         let path = "";
 
-        switch (e.currentTarget.value) {
-            case "SleekS": path = SleekS; break;
-            case "FatS": path = FatS; break;
-            case "StylishS": path = path_S4S; break;
-            case "SharperStylishS": path = path_s4SSharp; break;
-            case "OriginalS": path = path_originalS; break;
-            case "leaningOne": path = leaning_One; break;
-            case "stylish3": path = stylish3; break;
-            case "normal4": path = normal4; break;
-            case "leaning4": path = leaning4; break;
-            case "Stylish4": path = stylish4; break;
-            case "Z": path = path_Z; break;
-            default: break;
-        }
+        symbolSVGs.forEach(s => {
+            if (s.name == e.currentTarget.value)
+                path = s.svg;
+        })
 
         props.setSymbol({ ...props, svg_path: path });
     }
@@ -95,17 +85,7 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
                     <div style={{ display: " flex", paddingLeft: "0.5rem" }}>
                         <label style={{ marginRight: "0.5rem" }}>Symbol: </label>
                         <select defaultValue={symbolType} onChange={e => changeSymbolType(e)}>
-                            <option value="SleekS">SleekS</option>
-                            <option value="FatS">FatS</option>
-                            <option value="StylishS">StylishS</option>
-                            <option value="SharperStylishS">SharperStylishS</option>
-                            <option value="OriginalS">OriginalS</option>
-                            <option value="leaningOne">leaning 1</option>
-                            <option value="stylish3">stylish3</option>
-                            <option value="normal4">normal 4</option>
-                            <option value="leaning4">leaning 4</option>
-                            <option value="Stylish4">stylish 4</option>
-                            <option value="Z">Z</option>
+                            {symbolSVGs.map(s => <option value={s.name}>{s.name}</option>)}
                         </select>
                         <button className="symbolBtn" onClick={() => props.deleteSymbol({ ...props })}>Delete</button>
                     </div>
@@ -117,18 +97,10 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
 
 const loadSymbolFromPath = (path: string): string => {
 
-    switch (path) {
-        case SleekS: return "SleekS";
-        case FatS: return "FatS";
-        case path_S4S: return "StylishS";
-        case path_s4SSharp: return "SharperStylishS";
-        case path_originalS: return "OriginalS";
-        case leaning_One: return "leaningOne";
-        case stylish3: return "stylish3";
-        case normal4: return "normal4";
-        case leaning4: return "leaning4";
-        case stylish4: return "Stylish4";
-        case path_Z: return "Z";
-        default: return "SleekS";
-    }
+    symbolSVGs.forEach(s => {
+        if (s.svg == path) return s.name;
+    })
+
+    return symbolSVGs[0].name;
+
 }
