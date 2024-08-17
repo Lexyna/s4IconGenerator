@@ -14,7 +14,6 @@ export interface SVGIconProps {
     EmblemCol1: string,
     EmblemCol2: string,
     EmblemOverrideBg: boolean,
-    SType: string,
     symbolConfig: symbolConfig[]
 }
 
@@ -95,9 +94,9 @@ export const SVGIconSpace = (props: SVGIconProps) => {
                     </linearGradient>
                 </defs>
                 <rect x={0} y={0} width="100%" height="100%" fill="url(#bgGradient)"></rect>
-                {props.corners && props.corners >= 1 ? <polygon points="0 75, 0 100, 25 100, 0" fill="url(#cornerGradient1)" filter="drop-shadow(3px -2px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
+                {props.corners && props.corners >= 1 ? <polygon points="0 75, 0 100, 25 100, 0" fill="url(#cornerGradient1)" filter="drop-shadow(2px -2px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
                 {props.corners && props.corners >= 2 ? <polygon points="100 75, 100 100, 75 100, 0" fill="url(#cornerGradient2)" filter="drop-shadow(-2px -2px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
-                {props.corners && props.corners >= 3 ? <polygon points="100 25, 100 0, 75 0, 0" fill="url(#cornerGradient3)" filter="drop-shadow(2px 4px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
+                {props.corners && props.corners >= 3 ? <polygon points="100 25, 100 0, 75 0, 0" fill="url(#cornerGradient3)" filter="drop-shadow(-2px 2px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
                 {props.corners && props.corners >= 4 ? <polygon points="0 25, 0 0, 25 0, 0" fill="url(#cornerGradient4)" filter="drop-shadow(1px 3px 2px rgb(0 0 0 / 0.4))"></polygon> : <></>}
                 {props.stripes == 1 ?
                     <>

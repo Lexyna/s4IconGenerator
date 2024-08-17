@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Controls } from "./Controls";
 import { Emblem, SVGIconProps, SVGIconSpace } from "./SVGIconSpace";
-import { symbolSVGs } from "./SVGSymbolPaths";
 import { defaultSymbolConf } from "./SymbolControlls";
 
 export const MainView = () => {
@@ -17,7 +16,6 @@ export const MainView = () => {
         EmblemCol1: "#e0a41f",
         EmblemCol2: "#8a6412",
         EmblemOverrideBg: true,
-        SType: symbolSVGs[11].svg,
         symbolConfig: [defaultSymbolConf]
     })
 
