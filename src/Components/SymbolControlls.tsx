@@ -85,7 +85,7 @@ export const SymbolControlls = (props: symbolConfigStateP) => {
                     <div style={{ display: " flex", paddingLeft: "0.5rem" }}>
                         <label style={{ marginRight: "0.5rem" }}>Symbol: </label>
                         <select defaultValue={symbolType} onChange={e => changeSymbolType(e)}>
-                            {symbolSVGs.map(s => <option value={s.name}>{s.name}</option>)}
+                            {symbolSVGs.map(s => <option value={s.name} key={s.name}>{s.name}</option>)}
                         </select>
                         <button className="symbolBtn" onClick={() => props.deleteSymbol({ ...props })}>Delete</button>
                     </div>
